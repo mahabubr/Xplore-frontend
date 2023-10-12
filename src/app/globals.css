@@ -69,3 +69,7 @@ body {
 }
 
 /* Add your own custom styles below this line */
+
+.custom-clip-path {
+  clip-path: polygon(28% 0, 100% 0%, 100% 100%, 0% 100%);
+}

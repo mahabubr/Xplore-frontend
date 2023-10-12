@@ -31,16 +31,7 @@ const FormInput = ({
   } = useFormContext();
 
   return (
-    <>
-      {required ? (
-        <span
-          style={{
-            color: "red",
-          }}
-        >
-          *
-        </span>
-      ) : null}
+    <div>
       {label ? label : null}
       <Controller
         control={control}
@@ -65,7 +56,7 @@ const FormInput = ({
           )
         }
       />
-    </>
+    </div>
   );
 };
 
