@@ -11,7 +11,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Alegreya Sans SC', sans-serif;
+  font-family: "Alegreya Sans SC", sans-serif;
 }
 
 /* Set fonts to a consistent baseline */
@@ -72,4 +72,38 @@ body {
 
 .custom-clip-path {
   clip-path: polygon(28% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* navbar.css */
+
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.mobile-menu-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+
+.banner {
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
 }

@@ -1,72 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animate from "../../../assets/animate/travel2.json";
 import logo from "../../../assets/brand.png";
 import Image from "next/image";
-import Link from "next/link";
-import Step from "@/components/UI/Step";
+import Form from "@/components/Froms/Form";
 import FormInput from "@/components/Froms/FormInput";
-import { Button } from "antd";
+import { Button, message } from "antd";
+import Link from "next/link";
+import { useCreateUserMutation } from "@/redux/api/features/user/userApi";
+import ApiError from "@/components/Errors/ApiError";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
-  const steps = [
-    {
-      title: "Signup Info",
-      content: (
-        <>
-          <div className="space-y-3 mt-6">
-            <FormInput
-              name="email"
-              type="email"
-              label="Email"
-              placeholder="example@email.com"
-            />
-            <FormInput
-              name="password"
-              label="Password"
-              placeholder="******"
-              type="password"
-            />
-          </div>
-        </>
-      ),
-    },
-    {
-      title: "Personal Info",
-      content: (
-        <>
-          <div className="space-y-3 mt-6">
-            <FormInput
-              name="name"
-              type="text"
-              label="Name"
-              placeholder="John De"
-            />
-            <FormInput
-              name="phone"
-              type="text"
-              label="Phone"
-              placeholder="+1 2522 1455 6688"
-            />
-            <FormInput
-              name="address"
-              type="text"
-              label="Address"
-              placeholder="California, USA"
-            />
-          </div>
-        </>
-      ),
-    },
-  ];
+  const [createUser] = useCreateUserMutation();
+  const [error, setError] = useState<any>({});
 
-  const onSubmit = (data: any) => {
+  const router = useRouter();
+
+  const onSubmit = async (data: any) => {
+    data["role"] = "tourist";
     try {
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+      const res = await createUser(data).unwrap();
+      if (res.success) {
+        message.success(res.message);
+        setError({});
+        router.push("/login");
+      }
+    } catch (error: any) {
+      setError(error);
     }
   };
 
@@ -80,14 +43,32 @@ const SignUp = () => {
         <Lottie animationData={animate} loop={true} />
       </div>
       <div className="relative w-full bg-elegant col-span-2 custom-clip-path">
-        <div className="relative z-10 h-full flex flex-col justify-center items-center">
-          <h2 className="text-xl text mb-8">Register Your Account</h2>
-          <Step
-            steps={steps}
-            submitHandler={(value) => {
-              onSubmit(value);
-            }}
-          />
+        <div className="relative z-10 h-full  flex flex-col justify-center items-center">
+          <h2 className="text-xl text mb-8 text-primary">
+            Register Your Account
+          </h2>
+          <Form submitHandler={onSubmit}>
+            <div className="space-y-3">
+              <FormInput
+                name="email"
+                type="email"
+                label="Email"
+                placeholder="example@email.com"
+              />
+              <FormInput
+                name="password"
+                label="Password"
+                placeholder="******"
+                type="password"
+              />
+            </div>
+            <ApiError error={error} />
+            <div className="mt-5 ">
+              <Button type="primary" className="w-full" htmlType="submit">
+                Sign Up
+              </Button>
+            </div>
+          </Form>
           <span className="mt-6 text-xs text-neutral">
             Don&lsquo;t have and account?{" "}
             <Link className="text-sunset" href="/login">

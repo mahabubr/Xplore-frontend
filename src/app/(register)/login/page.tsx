@@ -1,19 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animate from "../../../assets/animate/travel.json";
 import logo from "../../../assets/brand.png";
 import Image from "next/image";
 import Form from "@/components/Froms/Form";
 import FormInput from "@/components/Froms/FormInput";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
-  const onSubmit = (data: any) => {
+  const router = useRouter();
+
+  const [error, setError] = useState("");
+
+  const onSubmit = async (data: any) => {
     try {
-      console.log(data);
+      const result = await signIn("Xplore", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+        // callbackUrl: "/",
+      });
+      if (result?.ok) {
+        message.success("Login Successful");
+        window.location.reload();
+        setError("");
+      } else {
+        setError("Account Not Found");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +48,9 @@ const Login = () => {
       </div>
       <div className="relative w-full bg-elegant col-span-2 custom-clip-path">
         <div className="relative z-10 h-full flex flex-col justify-center items-center">
-          <h2 className="text-xl text mb-8">Sign In Your Account</h2>
+          <h2 className="text-xl text mb-8 text-primary">
+            Sign In Your Account
+          </h2>
           <Form submitHandler={onSubmit}>
             <div className="space-y-3">
               <FormInput
@@ -46,6 +66,10 @@ const Login = () => {
                 type="password"
               />
             </div>
+            <small className="text-passion">
+              {error}
+              <br />
+            </small>
             <div className="mt-5 ">
               <Button type="primary" className="w-full" htmlType="submit">
                 Sign In
