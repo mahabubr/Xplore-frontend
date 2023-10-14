@@ -6,6 +6,7 @@ import { Button, Menu } from "antd";
 import { CSSTransition } from "react-transition-group";
 import logo from "../../assets/brand.png";
 import Image from "next/image";
+import Link from "next/link";
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -28,13 +29,13 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex space-x-6 ">
           {routes.map((route) => (
-            <a
+            <Link
               key={route.path}
               href={route.path}
               className="text-white hover:text-accent transition duration-300"
             >
               {route.name}
-            </a>
+            </Link>
           ))}
           <Button type="primary">Login</Button>
         </div>
@@ -55,7 +56,7 @@ const Navbar = () => {
           <Menu mode="vertical">
             {routes.map((route) => (
               <Menu.Item key={route.path}>
-                <a href={route.path}>{route.name}</a>
+                <Link href={route.path}>{route.name}</Link>
               </Menu.Item>
             ))}
             <Menu.Item key="login">
