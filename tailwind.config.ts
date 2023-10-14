@@ -24,7 +24,7 @@ const config: Config = {
         water: "#40E0D0", // Turquoise Blue
         sky: "#87CEEB", // Sky Blue
         warm: "#F5DEB3", // Sandy Beige
-        elegant: "#E6E6FA", // Lavender
+        elegant: "#f9f9f9", // Lavender
       },
     },
   },

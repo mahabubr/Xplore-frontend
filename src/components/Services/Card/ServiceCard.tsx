@@ -17,7 +17,7 @@ const ServiceCard = ({
     service;
 
   return (
-    <Link href={`/service/${id}`}>
+    <Link href={`/services/${id}`}>
       <Card
         loading={isLoading}
         hoverable

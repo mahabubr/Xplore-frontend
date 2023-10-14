@@ -9,9 +9,16 @@ const servicesApi = api.injectEndpoints({
         method: "GET",
         params: args,
       }),
-      providesTags: [tagTypes.user],
+      providesTags: [tagTypes.services],
+    }),
+    getSingleServices: build.query({
+      query: (id) => ({
+        url: `/services/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.services],
     }),
   }),
 });
 
-export const { useGetServicesQuery } = servicesApi;
+export const { useGetServicesQuery, useGetSingleServicesQuery } = servicesApi;

@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
         <div className="md:hidden">
           <MenuOutlined
-            className="text-white text-3xl cursor-pointer"
+            className="text-nature text-3xl cursor-pointer"
             onClick={handleMenuToggle}
           />
         </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
         classNames="mobile-menu"
         unmountOnExit
       >
-        <div className="md:hidden mt-5">
+        <div className="md:hidden mt-5 ">
           <Menu mode="vertical">
             {routes.map((route) => (
               <Menu.Item key={route.path}>

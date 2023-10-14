@@ -1,6 +1,7 @@
 "use client";
 
 import ServiceDate from "@/components/Services/ServiceDate";
+import ServiceFilter from "@/components/Services/ServiceFilter/ServiceFilter";
 import ServiceNameFilter from "@/components/Services/ServiceNameFilter";
 import ServicePriceHighToLow from "@/components/Services/ServicePriceHighToLow";
 import ServicesPriceLowToHigh from "@/components/Services/ServicesPriceLowToHigh";
@@ -11,13 +12,16 @@ import {
   arrayMove,
   horizontalListSortingStrategy,
   SortableContext,
-  useSortable,
 } from "@dnd-kit/sortable";
 import { Tabs } from "antd";
 import { Col, Row } from "antd";
 import { useState } from "react";
 
 const Services = () => {
+  const [location, setLocation] = useState<string>("");
+  const [month, setMonth] = useState("");
+  const [sliderValues, setSliderValues] = useState("");
+
   const [items, setItems] = useState([
     {
       key: "latest",
@@ -56,7 +60,7 @@ const Services = () => {
   };
 
   return (
-    <div className="w-10/12 mx-auto mt-10">
+    <div className="w-11/12 mx-auto mt-10">
       <Row gutter={50}>
         <Col span={18}>
           <Tabs
@@ -81,7 +85,14 @@ const Services = () => {
             )}
           />
         </Col>
-        <Col span={6}>Right</Col>
+        <Col span={6}>
+          <ServiceFilter
+            setLocation={setLocation}
+            setMonth={setMonth}
+            setSliderValues={setSliderValues}
+            sliderValues={sliderValues}
+          />
+        </Col>
       </Row>
     </div>
   );

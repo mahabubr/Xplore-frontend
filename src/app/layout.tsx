@@ -6,6 +6,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import "leaflet/dist/leaflet.css";
+
 export const metadata: Metadata = {
   title: "Xplore",
   description: "Travel Agency Service",
