@@ -3,15 +3,15 @@ import api from "../../api";
 
 const servicesApi = api.injectEndpoints({
   endpoints: (build) => ({
-    createUser: build.query({
-      query: (data) => ({
+    getServices: build.query({
+      query: (args) => ({
         url: "/services",
-        method: "POST",
-        data: data,
+        method: "GET",
+        params: args,
       }),
       providesTags: [tagTypes.user],
     }),
   }),
 });
 
-export const {} = servicesApi;
+export const { useGetServicesQuery } = servicesApi;

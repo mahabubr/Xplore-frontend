@@ -22,22 +22,24 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-primary p-4">
+    <nav className="bg-primary  p-4 sticky top-0 z-50 backdrop-blur-xl backdrop:bg-primary bg-white/30">
       <div className="container mx-auto flex justify-between items-center ">
         <div className="flex items-center">
           <Image src={logo} width={100} height={30} alt="" />
         </div>
-        <div className="hidden md:flex space-x-6 ">
+        <div className="hidden md:flex space-x-6 items-center">
           {routes.map((route) => (
             <Link
               key={route.path}
               href={route.path}
-              className="text-white hover:text-accent transition duration-300"
+              className="text-sunset hover:text-passion transition duration-500"
             >
               {route.name}
             </Link>
           ))}
-          <Button type="primary">Login</Button>
+          <Link href={"/login"}>
+            <Button type="primary">Login</Button>
+          </Link>
         </div>
         <div className="md:hidden">
           <MenuOutlined
@@ -60,7 +62,9 @@ const Navbar = () => {
               </Menu.Item>
             ))}
             <Menu.Item key="login">
-              <Button type="primary">Login</Button>
+              <Link href={"/login"}>
+                <Button type="primary">Login</Button>
+              </Link>
             </Menu.Item>
           </Menu>
         </div>

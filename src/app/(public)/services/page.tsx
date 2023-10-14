@@ -13,7 +13,6 @@ import {
   SortableContext,
   useSortable,
 } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { Tabs } from "antd";
 import { Col, Row } from "antd";
 import { useState } from "react";
@@ -21,8 +20,8 @@ import { useState } from "react";
 const Services = () => {
   const [items, setItems] = useState([
     {
-      key: "date",
-      label: "Date",
+      key: "latest",
+      label: "Latest",
       children: <ServiceDate />,
     },
     {
@@ -62,6 +61,7 @@ const Services = () => {
         <Col span={18}>
           <Tabs
             type="card"
+            animated
             items={items}
             renderTabBar={(tabBarProps, DefaultTabBar) => (
               <DndContext sensors={[sensor]} onDragEnd={onDragEnd}>
