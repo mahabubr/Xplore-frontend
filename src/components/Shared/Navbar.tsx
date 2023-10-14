@@ -2,13 +2,26 @@
 
 import { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
-import { Button, Menu } from "antd";
+import { Button, Drawer, Menu } from "antd";
 import { CSSTransition } from "react-transition-group";
 import logo from "../../assets/brand.png";
 import Image from "next/image";
 import Link from "next/link";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import CartDrawer from "../UI/CartDrawer";
+
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
+
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
 
   const handleMenuToggle = () => {
     setMenuVisible(!menuVisible);
@@ -40,6 +53,7 @@ const Navbar = () => {
           <Link href={"/login"}>
             <Button type="primary">Login</Button>
           </Link>
+          <ShoppingCartOutlined className="text-lg" onClick={showDrawer} />
         </div>
         <div className="md:hidden">
           <MenuOutlined
@@ -69,6 +83,7 @@ const Navbar = () => {
           </Menu>
         </div>
       </CSSTransition>
+      <CartDrawer open={open} onClose={onClose} />
     </nav>
   );
 };

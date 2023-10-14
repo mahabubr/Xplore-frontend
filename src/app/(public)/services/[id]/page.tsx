@@ -19,9 +19,13 @@ import {
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import ServiceCard from "@/components/Services/Card/ServiceCard";
 import { iServices } from "@/interface/api";
+import { useDispatch } from "react-redux";
+import { storeProduct } from "@/redux/api/features/services/servicesSlice";
 
 const SingleService = ({ params }: any) => {
   const { id } = params;
+
+  const dispatch = useDispatch();
 
   const { data, isLoading } = useGetSingleServicesQuery(id);
   const { data: serviceAllData } = useGetServicesQuery({ limit: 3, page: 1 });
@@ -53,6 +57,10 @@ const SingleService = ({ params }: any) => {
   const gridStyle: React.CSSProperties = {
     width: "25%",
     textAlign: "center",
+  };
+
+  const handleAddToCart = (ser: any) => {
+    dispatch(storeProduct(ser));
   };
 
   return (
@@ -153,7 +161,11 @@ const SingleService = ({ params }: any) => {
           </Col>
           <Col span={6}>
             <div>
-              <Button type="primary" className="w-full">
+              <Button
+                onClick={() => handleAddToCart(data?.data)}
+                type="primary"
+                className="w-full"
+              >
                 Add To Card
               </Button>
             </div>
