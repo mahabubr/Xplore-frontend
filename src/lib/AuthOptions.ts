@@ -59,7 +59,7 @@ export const authOptions: AuthOptions = {
         process.env.JWT_SECRET!
       );
       if (!verifiedToken) {
-        const data = await getNewAccessToken(token?.access_token);
+        const data = await getNewAccessToken(token?.user?.refresh_token);
         token.access_token = data?.access_token;
       }
       return {

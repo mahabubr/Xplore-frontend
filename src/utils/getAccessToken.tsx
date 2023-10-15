@@ -1,11 +1,11 @@
 import { useSession } from "next-auth/react";
 
-const GetNewAccessToken = () => {
+const GetActiveUser = () => {
   const { data: session } = useSession();
 
   // @ts-ignore
-  const access_token = session?.user?.access_token;
+  const access_token = session;
   return access_token;
 };
 
-export default GetNewAccessToken;
+export default GetActiveUser;

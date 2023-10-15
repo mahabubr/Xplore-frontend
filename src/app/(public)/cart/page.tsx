@@ -57,8 +57,8 @@ const Cart = () => {
           </div>
         </Col>
       </Row>
-
       <XBookingModal
+        cartData={cartData}
         setIsModalOpen={setIsModalOpen}
         isModalOpen={isModalOpen}
         calenderData={calenderData}

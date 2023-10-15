@@ -1,9 +1,21 @@
-import React, { useState } from "react";
-import { Button, Col, Modal, Row } from "antd";
+import React from "react";
+import { Button, Col, Modal, Row, message } from "antd";
 import Form from "../Froms/Form";
 import FormInput from "../Froms/FormInput";
+import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
+import { useCreateBookingMutation } from "@/redux/api/features/booking/bookingApi";
 
-const XBookingModal = ({ setIsModalOpen, isModalOpen, calenderData }: any) => {
+const XBookingModal = ({
+  setIsModalOpen,
+  isModalOpen,
+  calenderData,
+  cartData,
+}: any) => {
+  const { data: userData } = useGetProfileQuery({});
+  const userInfo = userData?.data;
+
+  const [createBooking] = useCreateBookingMutation();
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -13,11 +25,30 @@ const XBookingModal = ({ setIsModalOpen, isModalOpen, calenderData }: any) => {
   };
 
   const onSubmit = async (data: any) => {
+    delete data.email;
+    delete data.phone;
+
+    message.loading("Ongoing ...");
+
+    const serviceId = cartData?.map(
+      (cart: Record<string, any>) => cart?.service?.id
+    );
+
     data.date_from = calenderData?.startDate;
     data.date_to = calenderData?.endDate;
+    data["userId"] = userInfo?.id;
+    data["serviceId"] = serviceId;
+    data.how_day = parseInt(data.how_day);
+    data.adult = parseInt(data.adult);
+    data.child = parseInt(data.child);
+    data.infant = parseInt(data.infant);
 
     try {
-      console.log(data);
+      const res = await createBooking(data).unwrap();
+      if (res.success) {
+        message.success(res.message);
+        setIsModalOpen(false);
+      }
     } catch (error: any) {
       console.log(error);
     }
@@ -40,6 +71,8 @@ const XBookingModal = ({ setIsModalOpen, isModalOpen, calenderData }: any) => {
                 name="email"
                 placeholder="Your Email"
                 label="Your Email"
+                value={userInfo?.email}
+                disabled
               />
             </Col>
             <Col span={12}>
@@ -47,6 +80,8 @@ const XBookingModal = ({ setIsModalOpen, isModalOpen, calenderData }: any) => {
                 name="phone"
                 placeholder="Phone Number"
                 label="Phone Number"
+                value={userInfo?.phone}
+                disabled
               />
             </Col>
             <Col span={12} className="mt-6">
