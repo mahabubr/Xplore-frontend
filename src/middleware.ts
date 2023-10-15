@@ -1,6 +1,7 @@
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { authKey } from "./constants/localStorageKey";
 
 const hybridRoutes = ["/login", "/register"];
 const touristRoutes = ["/", "/tourist", "profile"];
@@ -11,6 +12,14 @@ const rolesRedirect: Record<string, unknown> = {
 };
 export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request });
+
+  // // @ts-ignore
+  // const access_token = token?.user?.access_token;
+
+  // if (typeof window !== "undefined" && access_token) {
+  //   localStorage.setItem(authKey, access_token);
+  // }
+
   const { pathname } = request.nextUrl;
   if (!token) {
     if (hybridRoutes.includes(pathname)) {

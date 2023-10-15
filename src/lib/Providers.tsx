@@ -4,7 +4,7 @@ import store from "@/redux/store";
 import { Provider } from "react-redux";
 import StyledComponentsRegistry from "./AntdRegistry";
 import { ConfigProvider } from "antd";
-import theme from "@/app/theme/themeConfig";
+import theme from "@/theme/themeConfig";
 import AuthProvider from "./Authprovider";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {

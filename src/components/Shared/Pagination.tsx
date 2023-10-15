@@ -5,9 +5,9 @@ const XPagination = ({ handlePaginationChange, meta, size }: any) => {
     <div>
       <Pagination
         onChange={handlePaginationChange}
-        defaultCurrent={meta.page}
+        defaultCurrent={meta?.page}
         showSizeChanger={true}
-        total={meta.total}
+        total={meta?.total}
         pageSize={size}
         pageSizeOptions={[5, 10, 15]}
       />

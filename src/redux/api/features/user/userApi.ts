@@ -11,7 +11,14 @@ const userApi = api.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.user],
     }),
+    getProfile: build.query({
+      query: () => ({
+        url: "/user/profile",
+        method: "GET",
+      }),
+      providesTags: [tagTypes.user],
+    }),
   }),
 });
 
-export const { useCreateUserMutation } = userApi;
+export const { useCreateUserMutation, useGetProfileQuery } = userApi;

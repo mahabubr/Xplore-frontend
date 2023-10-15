@@ -16,7 +16,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   } = theme.useToken();
 
   return (
-    <Layout>
+    <Layout hasSider>
       <SideBar collapsed={collapsed} />
       <Layout style={{ minHeight: "100vh" }}>
         <TopBar

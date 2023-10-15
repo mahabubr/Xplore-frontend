@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
-import { Button, Drawer, Menu } from "antd";
+import { Avatar, Button, Drawer, Dropdown, Menu } from "antd";
 import { CSSTransition } from "react-transition-group";
 import logo from "../../assets/brand.png";
 import Image from "next/image";
@@ -11,10 +11,13 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import CartDrawer from "../UI/CartDrawer";
 
 import { useSession } from "next-auth/react";
+import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  console.log(session);
+
+  const { data } = useGetProfileQuery({});
+  const profile = data?.data;
 
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -55,9 +58,33 @@ const Navbar = () => {
               {route.name}
             </Link>
           ))}
-          <Link href={"/login"}>
-            <Button type="primary">Login</Button>
-          </Link>
+          {session?.user && session?.user ? (
+            <Dropdown
+              overlay={
+                <Menu>
+                  <Menu.Item key="1">
+                    <Link href={profile?.role}>Dashboard</Link>
+                  </Menu.Item>
+                  <Menu.Item key="2">
+                    <Link href={`/profile`}>Profile</Link>
+                  </Menu.Item>
+                  <Menu.Item key="3">Log Out</Menu.Item>
+                </Menu>
+              }
+              trigger={["click"]}
+            >
+              <a
+                className="ant-dropdown-link cursor-pointer"
+                onClick={(e) => e.preventDefault()}
+              >
+                <Avatar size={48} src={"image"} />
+              </a>
+            </Dropdown>
+          ) : (
+            <Link href={"/login"}>
+              <Button type="primary">Login</Button>
+            </Link>
+          )}
           <ShoppingCartOutlined className="text-lg" onClick={showDrawer} />
         </div>
         <div className="md:hidden">

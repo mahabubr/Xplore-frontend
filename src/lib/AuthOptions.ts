@@ -35,7 +35,7 @@ export const authOptions: AuthOptions = {
           );
           if (res.ok && data) {
             return {
-              ...data,
+              ...{ user: data },
               ...verifiedToken,
             };
           }
