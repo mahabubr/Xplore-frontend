@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useDebounced } from "@/redux/hooks/useDebounced";
+import { useSelector } from "react-redux";
 
 const ServiceDate = () => {
   const query: Record<string, any> = {};
@@ -15,8 +16,17 @@ const ServiceDate = () => {
   const [size, setSize] = useState<number>(10);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
+  const {
+    services: { filters },
+  }: any = useSelector((state) => state);
+  const { minPrice, maxPrice, month, location } = filters;
+
   query["limit"] = size;
   query["page"] = page;
+  query["minPrice"] = minPrice;
+  query["maxPrice"] = maxPrice;
+  query["month"] = month;
+  query["location"] = location;
 
   const debouncedSearchTerm = useDebounced({
     searchQuery: searchTerm,

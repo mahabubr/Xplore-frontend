@@ -1,15 +1,15 @@
 import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define the initial state
 interface ServicesState {
-  services: any[]; // Replace 'any' with a more specific type if possible
+  services: any[];
+  filters: Record<string, any>;
 }
 
 const initialState: ServicesState = {
   services: [],
+  filters: {},
 };
 
-// Create a services slice
 const servicesSlice = createSlice({
   name: "services",
   initialState,
@@ -35,12 +35,13 @@ const servicesSlice = createSlice({
     resetProduct: (state) => {
       state.services = [];
     },
+    setFilters: (state, action) => {
+      state.filters = action.payload;
+    },
   },
 });
 
-// Export the action creators
-export const { storeProduct, removeProduct, resetProduct } =
+export const { storeProduct, removeProduct, resetProduct, setFilters } =
   servicesSlice.actions;
 
-// Export the reducer
 export default servicesSlice.reducer;

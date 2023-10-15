@@ -8,8 +8,6 @@ const CartDrawer = ({ open, onClose }: any) => {
 
   const data = services?.services;
 
-  console.log(data);
-
   return (
     <Drawer
       title="Cart"

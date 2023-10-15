@@ -18,10 +18,6 @@ import { Col, Row } from "antd";
 import { useState } from "react";
 
 const Services = () => {
-  const [location, setLocation] = useState<string>("");
-  const [month, setMonth] = useState("");
-  const [sliderValues, setSliderValues] = useState("");
-
   const [items, setItems] = useState([
     {
       key: "latest",
@@ -86,12 +82,7 @@ const Services = () => {
           />
         </Col>
         <Col span={6}>
-          <ServiceFilter
-            setLocation={setLocation}
-            setMonth={setMonth}
-            setSliderValues={setSliderValues}
-            sliderValues={sliderValues}
-          />
+          <ServiceFilter />
         </Col>
       </Row>
     </div>
