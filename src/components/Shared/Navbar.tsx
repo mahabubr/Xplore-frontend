@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer, Menu } from "antd";
 import { CSSTransition } from "react-transition-group";
@@ -10,7 +10,12 @@ import Link from "next/link";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import CartDrawer from "../UI/CartDrawer";
 
+import { useSession } from "next-auth/react";
+
 const Navbar = () => {
+  const { data: session } = useSession();
+  console.log(session);
+
   const [menuVisible, setMenuVisible] = useState(false);
 
   const [open, setOpen] = useState(false);

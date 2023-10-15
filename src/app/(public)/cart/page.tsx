@@ -2,6 +2,7 @@
 
 import CartCard from "@/components/Cart/CartCard";
 import Loader from "@/components/Shared/Loader";
+import XCalender from "@/components/UI/XCalender";
 import { iServices } from "@/interface/api";
 import { useGetCartQuery } from "@/redux/api/features/cart/cartApi";
 import { Col, Row } from "antd";
@@ -31,7 +32,9 @@ const Cart = () => {
               ))}
           </div>
         </Col>
-        <Col span={8}>Book</Col>
+        <Col span={8}>
+          <XCalender />
+        </Col>
       </Row>
     </div>
   );

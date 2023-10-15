@@ -2,7 +2,7 @@ import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const hybridRoutes = ["/", "/login", "/register"];
+const hybridRoutes = ["/login", "/register"];
 const touristRoutes = ["/", "/tourist", "profile"];
 const rolesRedirect: Record<string, unknown> = {
   super_admin: "http://localhost:3000/super-admin",
@@ -26,6 +26,11 @@ export async function middleware(request: NextRequest) {
     (role === "tourist" && pathname.startsWith("/tourist"))
     // (role === "tourist" && touristRoutes.includes(pathname))
   ) {
+    return NextResponse.next();
+  }
+
+  if (pathname === "/") {
+    // Handle access to the root route after logging in.
     return NextResponse.next();
   }
 

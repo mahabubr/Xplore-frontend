@@ -7,13 +7,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import "leaflet/dist/leaflet.css";
+import "react-day-picker/dist/style.css";
 
 export const metadata: Metadata = {
   title: "Xplore",
   description: "Travel Agency Service",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
