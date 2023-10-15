@@ -36,7 +36,7 @@ const Cart = () => {
                   key={service.id}
                   style={{ borderBottom: "1px solid gray" }}
                 >
-                  <CartCard service={service.service as iServices} />
+                  <CartCard services={service as iServices} />
                 </div>
               ))}
           </div>

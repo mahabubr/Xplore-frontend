@@ -1,13 +1,13 @@
 import { iServices } from "@/interface/api";
 import { Button, Drawer, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import CartCard from "../Cart/CartCard";
 import Link from "next/link";
 import { useCreateCartMutation } from "@/redux/api/features/cart/cartApi";
 import { resetCart } from "@/redux/api/features/services/servicesSlice";
 import { useRouter } from "next/navigation";
 import Notes from "../notes/Notes";
 import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
+import DrawerCartCard from "../Cart/DrawerCartCard";
 
 const CartDrawer = ({ open, onClose }: any) => {
   const { services }: any = useSelector((state) => state);
@@ -52,7 +52,7 @@ const CartDrawer = ({ open, onClose }: any) => {
       <div className="space-y-7">
         {data.length > 0 ? (
           data?.map((service: iServices) => (
-            <CartCard key={service.id} service={service} />
+            <DrawerCartCard key={service.id} service={service} />
           ))
         ) : (
           <Notes />

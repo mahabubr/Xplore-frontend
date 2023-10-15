@@ -1,31 +1,9 @@
 import { iServices } from "@/interface/api";
-import { Button, message } from "antd";
 import Image from "next/image";
-import { DeleteFilled } from "@ant-design/icons";
-import { useDeleteCartMutation } from "@/redux/api/features/cart/cartApi";
 
-const CartCard = ({ services }: { services: iServices }) => {
-  // @ts-ignore
-
-  const { service, id } = services;
-
+const DrawerCartCard = ({ service }: { service: iServices }) => {
   const { image, title, price, location, availabilityType, departureTime } =
     service;
-
-  const [deleteCart] = useDeleteCartMutation();
-
-  const handleCartDelete = async (payload: string) => {
-    message.loading("Deleting...");
-    try {
-      const res = await deleteCart(payload).unwrap();
-      if (res.success) {
-        message.success(res.message);
-      }
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div>
@@ -46,18 +24,9 @@ const CartCard = ({ services }: { services: iServices }) => {
           <p className="text-neutral">{location}</p>
           <p className="text-neutral">Departure : {departureTime}</p>
         </div>
-        <div>
-          <Button
-            onClick={() => handleCartDelete(id)}
-            type="text"
-            className="text-passion"
-          >
-            <DeleteFilled /> Delete
-          </Button>
-        </div>
       </div>
     </div>
   );
 };
 
-export default CartCard;
+export default DrawerCartCard;
