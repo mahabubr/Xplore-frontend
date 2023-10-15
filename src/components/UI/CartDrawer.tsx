@@ -7,9 +7,12 @@ import { useCreateCartMutation } from "@/redux/api/features/cart/cartApi";
 import { resetCart } from "@/redux/api/features/services/servicesSlice";
 import { useRouter } from "next/navigation";
 import Notes from "../notes/Notes";
+import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
 
 const CartDrawer = ({ open, onClose }: any) => {
   const { services }: any = useSelector((state) => state);
+
+  const { data: profileData } = useGetProfileQuery({});
 
   const [createCart] = useCreateCartMutation();
 
@@ -22,7 +25,7 @@ const CartDrawer = ({ open, onClose }: any) => {
     message.loading("Adding...");
     try {
       const payload = cartData?.map((cart: any) => ({
-        userId: "59b2462e-185b-4a5b-9c7c-8bbdf6d3ecab",
+        userId: profileData?.data?.id,
         serviceId: cart.id,
       }));
 

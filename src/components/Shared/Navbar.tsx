@@ -63,7 +63,7 @@ const Navbar = () => {
               overlay={
                 <Menu>
                   <Menu.Item key="1">
-                    <Link href={profile?.role}>Dashboard</Link>
+                    <Link href={profile?.role || ""}>Dashboard</Link>
                   </Menu.Item>
                   <Menu.Item key="2">
                     <Link href={`/profile`}>Profile</Link>

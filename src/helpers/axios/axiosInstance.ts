@@ -1,4 +1,6 @@
+import { authOptions } from "@/lib/AuthOptions";
 import axios from "axios";
+import { getSession } from "next-auth/react";
 
 const instance = axios.create();
 instance.defaults.headers.post["Content-Type"] = "application/json";
@@ -7,10 +9,12 @@ instance.defaults.timeout = 60000;
 
 // Add a request interceptor
 instance.interceptors.request.use(
-  function (config) {
+  async function (config) {
     // Do something before request is sent
-    const accessToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM3MTgzZDgyLTcwMGEtNGJhMi1iMjBhLTlmOTc3NjA0ZDI0NCIsImVtYWlsIjoiemFoaWRAaG9zc2Fpbi5jb20iLCJyb2xlIjoidG91cmlzdCIsImlhdCI6MTY5NzM3MzM4MSwiZXhwIjoxNjk4MjM3MzgxfQ.jQXkJftF8mSan85CGoQZ9YykEubMPd7jta-LBJtpZeE";
+
+    const session = await getSession(authOptions as any);
+    // @ts-ignore
+    const accessToken = session?.user?.access_token;
     if (accessToken) {
       config.headers.Authorization = accessToken;
     }

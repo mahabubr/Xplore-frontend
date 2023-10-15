@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 
-const XCalender = () => {
+const XCalender = ({ setCalenderData }: any) => {
   const [selected, setSelected] = useState<Date[]>([]);
 
   const handleDayClick = (date: Date) => {
@@ -21,9 +21,9 @@ const XCalender = () => {
         startDate: format(selected[0], "PP"),
         endDate: format(selected[1], "PP"),
       };
-      console.log({ selectDate });
+      setCalenderData(selectDate);
     }
-  }, [selected]);
+  }, [selected, setCalenderData]);
 
   return (
     <div className="sticky top-20">
