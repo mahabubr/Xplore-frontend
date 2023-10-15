@@ -32,7 +32,7 @@ const servicesSlice = createSlice({
         );
       }
     },
-    resetProduct: (state) => {
+    resetCart: (state) => {
       state.services = [];
     },
     setFilters: (state, action) => {
@@ -41,7 +41,7 @@ const servicesSlice = createSlice({
   },
 });
 
-export const { storeProduct, removeProduct, resetProduct, setFilters } =
+export const { storeProduct, removeProduct, resetCart, setFilters } =
   servicesSlice.actions;
 
 export default servicesSlice.reducer;
