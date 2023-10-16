@@ -10,7 +10,8 @@ import Link from "next/link";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import CartDrawer from "../UI/CartDrawer";
 
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+
 import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
 
 const Navbar = () => {
@@ -63,14 +64,16 @@ const Navbar = () => {
           {session?.user && session?.user ? (
             <Dropdown
               overlay={
-                <Menu>
+                <Menu className="w-56">
                   <Menu.Item key="1">
                     <Link href={profile?.role || ""}>Dashboard</Link>
                   </Menu.Item>
                   <Menu.Item key="2">
                     <Link href={`/${profile?.role}/profile`}>Profile</Link>
                   </Menu.Item>
-                  <Menu.Item key="3">Log Out</Menu.Item>
+                  <Menu.Item onClick={() => signOut()} key="3">
+                    Log Out
+                  </Menu.Item>
                 </Menu>
               }
               trigger={["click"]}
@@ -109,11 +112,35 @@ const Navbar = () => {
                 <Link href={route.path}>{route.name}</Link>
               </Menu.Item>
             ))}
-            <Menu.Item key="login">
+            {session?.user && session?.user ? (
+              <Dropdown
+                overlay={
+                  <Menu className="w-56">
+                    <Menu.Item key="1">
+                      <Link href={profile?.role || ""}>Dashboard</Link>
+                    </Menu.Item>
+                    <Menu.Item key="2">
+                      <Link href={`/${profile?.role}/profile`}>Profile</Link>
+                    </Menu.Item>
+                    <Menu.Item onClick={() => signOut()} key="3">
+                      Log Out
+                    </Menu.Item>
+                  </Menu>
+                }
+                trigger={["click"]}
+              >
+                <a
+                  className="ant-dropdown-link cursor-pointer"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Avatar size={48} src={profile?.image} />
+                </a>
+              </Dropdown>
+            ) : (
               <Link href={"/login"}>
                 <Button type="primary">Login</Button>
               </Link>
-            </Menu.Item>
+            )}
           </Menu>
         </div>
       </CSSTransition>

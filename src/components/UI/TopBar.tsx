@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Layout, Button, Avatar, Select, Dropdown, Menu } from "antd";
 import Image from "next/image";
 import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
+import { signOut } from "next-auth/react";
 
 const items: MenuProps["items"] = [
   {
@@ -96,14 +97,16 @@ const TopBar = ({ colorBgContainer, collapsed, setCollapsed }: any) => {
           </Dropdown>
           <Dropdown
             overlay={
-              <Menu>
+              <Menu className="w-56">
                 <Menu.Item key="1">
-                  <Link href={"/"}>Landing Page</Link>
+                  <Link href={profile?.role || ""}>Dashboard</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link href={`/${profile?.role}/profile`}>Profile</Link>
                 </Menu.Item>
-                <Menu.Item key="3">Log Out</Menu.Item>
+                <Menu.Item onClick={() => signOut()} key="3">
+                  Log Out
+                </Menu.Item>
               </Menu>
             }
             trigger={["click"]}

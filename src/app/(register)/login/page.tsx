@@ -41,7 +41,9 @@ const Login = () => {
     <div className="grid grid-cols-3 gap-8 h-screen">
       <div className="col-span-1 grid place-items-center">
         <div className="">
-          <Image src={logo} alt="brand" height={80} width={200} />
+          <Link href={"/"}>
+            <Image src={logo} alt="brand" height={80} width={200} />
+          </Link>
           <p className="text-center text-neutral">More Explore</p>
         </div>
         <Lottie animationData={animate} loop={true} />
