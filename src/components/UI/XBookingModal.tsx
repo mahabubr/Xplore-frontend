@@ -50,7 +50,7 @@ const XBookingModal = ({
         setIsModalOpen(false);
       }
     } catch (error: any) {
-      console.log(error);
+      message.error(error.data.message);
     }
   };
 

@@ -7,6 +7,7 @@ interface IInput {
   type?: string;
   size?: "large" | "small";
   value?: string | string[] | undefined;
+  Dvalue?: string | string[] | undefined;
   id?: string;
   placeholder?: string;
   validation?: object;
@@ -26,6 +27,7 @@ const FormInput = ({
   label,
   required,
   disabled,
+  Dvalue,
 }: IInput) => {
   const {
     control,
@@ -46,6 +48,7 @@ const FormInput = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
+              defaultValue={Dvalue}
             />
           ) : (
             <Input
@@ -54,6 +57,8 @@ const FormInput = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
+              defaultValue={Dvalue}
+              contentEditable
               disabled={disabled ? disabled : false}
             />
           )

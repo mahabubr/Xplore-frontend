@@ -32,8 +32,8 @@ const Login = () => {
       } else {
         setError("Account Not Found");
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      message.error(error.data.message);
     }
   };
 

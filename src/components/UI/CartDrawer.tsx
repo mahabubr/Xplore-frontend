@@ -36,8 +36,8 @@ const CartDrawer = ({ open, onClose }: any) => {
         router.push("/cart");
         onClose();
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      message.error(error.data.message);
     }
   };
 

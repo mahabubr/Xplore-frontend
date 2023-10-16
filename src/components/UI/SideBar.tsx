@@ -1,10 +1,12 @@
+import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
 import sideBarItems from "@/utils/sideBarItems";
 import { Layout, Menu } from "antd";
 
 const { Sider } = Layout;
 
 const SideBar = ({ collapsed }: { collapsed: boolean }) => {
-  const role = "admin";
+  const { data } = useGetProfileQuery({});
+  const  role  = data?.data?.role;
 
   const items = sideBarItems(role);
 

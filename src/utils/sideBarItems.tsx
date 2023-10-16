@@ -1,34 +1,20 @@
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
 const sideBarItems = (role: string) => {
-  const adminItems = [
+  const commonItems = [
     {
       key: "profile",
       icon: <UserOutlined />,
-      label: <Link href={"/admin/profile"}>Profile</Link>,
+      label: <Link href={`/${role}/profile`}>Profile</Link>,
     },
   ];
 
-  const superAdminItems = [
-    {
-      key: "profile",
-      icon: <UserOutlined />,
-      label: <Link href={"/super-admin/profile"}>Profile</Link>,
-    },
-  ];
+  const adminItems = [...commonItems];
 
-  const touristItems = [
-    {
-      key: "profile",
-      icon: <UserOutlined />,
-      label: <Link href={"/tourist/profile"}>Profile</Link>,
-    },
-  ];
+  const superAdminItems = [...commonItems];
+
+  const touristItems = [...commonItems];
 
   if (role === "admin") {
     return adminItems;
