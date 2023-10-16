@@ -15,6 +15,7 @@ instance.interceptors.request.use(
     const session = await getSession(authOptions as any);
     // @ts-ignore
     const accessToken = session?.user?.access_token;
+
     if (accessToken) {
       config.headers.Authorization = accessToken;
     }

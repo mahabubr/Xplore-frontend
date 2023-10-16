@@ -1,14 +1,15 @@
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UserOutlined,
   NotificationOutlined,
 } from "@ant-design/icons";
 import logo from "../../assets/brand.png";
 import type { MenuProps } from "antd";
+import Link from "next/link";
 
-import { Layout, Button, Avatar, Select, Dropdown } from "antd";
+import { Layout, Button, Avatar, Select, Dropdown, Menu } from "antd";
 import Image from "next/image";
+import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
 
 const items: MenuProps["items"] = [
   {
@@ -52,6 +53,9 @@ const items: MenuProps["items"] = [
 const { Header } = Layout;
 
 const TopBar = ({ colorBgContainer, collapsed, setCollapsed }: any) => {
+  const { data } = useGetProfileQuery({});
+  const profile = data?.data;
+
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
@@ -90,7 +94,27 @@ const TopBar = ({ colorBgContainer, collapsed, setCollapsed }: any) => {
               <NotificationOutlined />
             </Button>
           </Dropdown>
-          <Avatar size={40} icon={<UserOutlined />} />
+          <Dropdown
+            overlay={
+              <Menu>
+                <Menu.Item key="1">
+                  <Link href={"/"}>Landing Page</Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href={`/profile`}>Profile</Link>
+                </Menu.Item>
+                <Menu.Item key="3">Log Out</Menu.Item>
+              </Menu>
+            }
+            trigger={["click"]}
+          >
+            <a
+              className="ant-dropdown-link cursor-pointer"
+              onClick={(e) => e.preventDefault()}
+            >
+              <Avatar size={48} src={profile?.image} />
+            </a>
+          </Dropdown>
         </div>
       </div>
     </Header>

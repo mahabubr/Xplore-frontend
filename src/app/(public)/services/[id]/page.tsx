@@ -21,6 +21,8 @@ import ServiceCard from "@/components/Services/Card/ServiceCard";
 import { iServices } from "@/interface/api";
 import { useDispatch } from "react-redux";
 import { storeProduct } from "@/redux/api/features/services/servicesSlice";
+import Review from "@/components/Services/Reviews/Review";
+import ShowReviews from "@/components/Services/Reviews/ShowReviews";
 
 const SingleService = ({ params }: any) => {
   const { id } = params;
@@ -149,7 +151,7 @@ const SingleService = ({ params }: any) => {
                   center={[Number(lat), Number(long)]}
                   zoom={13}
                   scrollWheelZoom={true}
-                  className="w-full h-72"
+                  className="w-full z-40 h-72"
                 >
                   <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                   <Marker position={[Number(lat), Number(long)]}>
@@ -158,6 +160,8 @@ const SingleService = ({ params }: any) => {
                 </MapContainer>
               </div>
             </div>
+            <ShowReviews id={id} />
+            <Review id={id} />
           </Col>
           <Col span={6}>
             <div>

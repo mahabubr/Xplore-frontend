@@ -49,6 +49,7 @@ export const config = {
     "/login",
     "/register",
     //tourist routes
+    "/cart",
     "/tourist/:page*",
     //super admin routes
     "/super-admin/:page*",

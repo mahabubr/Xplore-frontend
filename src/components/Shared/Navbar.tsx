@@ -77,7 +77,7 @@ const Navbar = () => {
                 className="ant-dropdown-link cursor-pointer"
                 onClick={(e) => e.preventDefault()}
               >
-                <Avatar size={48} src={"image"} />
+                <Avatar size={48} src={profile?.image} />
               </a>
             </Dropdown>
           ) : (
