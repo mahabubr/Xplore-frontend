@@ -101,7 +101,7 @@ const TopBar = ({ colorBgContainer, collapsed, setCollapsed }: any) => {
                   <Link href={"/"}>Landing Page</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
-                  <Link href={`/profile`}>Profile</Link>
+                  <Link href={`/${profile?.role}/profile`}>Profile</Link>
                 </Menu.Item>
                 <Menu.Item key="3">Log Out</Menu.Item>
               </Menu>

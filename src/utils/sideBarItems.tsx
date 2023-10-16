@@ -14,7 +14,14 @@ const sideBarItems = (role: string) => {
 
   const superAdminItems = [...commonItems];
 
-  const touristItems = [...commonItems];
+  const touristItems = [
+    ...commonItems,
+    {
+      key: "booking-history",
+      icon: <UserOutlined />,
+      label: <Link href={`/tourist/booking-history`}>Booking History</Link>,
+    },
+  ];
 
   if (role === "admin") {
     return adminItems;

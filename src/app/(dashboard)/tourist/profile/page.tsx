@@ -63,7 +63,7 @@ const TouristProfile = () => {
       <Row gutter={50}>
         <Col span={8}>
           <Card className="flex flex-col  items-center w-full h-screen relative">
-            <div>
+            <div className="flex justify-center">
               <Form submitHandler={handleImageUpload}>
                 <UploadImage name="file" />
                 <br />
