@@ -5,15 +5,12 @@ import Form from "@/components/Froms/Form";
 import FormInput from "@/components/Froms/FormInput";
 import { useCreateUserMutation } from "@/redux/api/features/user/userApi";
 import { Button, Select, message } from "antd";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const CreateUser = () => {
   const [createUser] = useCreateUserMutation();
   const [error, setError] = useState<any>({});
   const [role, setRole] = useState("");
-
-  const router = useRouter();
 
   const onSubmit = async (data: any) => {
     data["role"] = role;

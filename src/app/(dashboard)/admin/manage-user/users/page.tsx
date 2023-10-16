@@ -94,12 +94,8 @@ const User = () => {
       render: function (data: any) {
         return (
           <div className="flex items-center gap-2">
-            <Link href={`/admin/`}>
-              <Button
-                onClick={() => message.info(`Maintenance - ${data}`)}
-                type="primary"
-                ghost
-              >
+            <Link href={`/admin/manage-user/users/${data}`}>
+              <Button type="primary" ghost>
                 <EditOutlined />
               </Button>
             </Link>

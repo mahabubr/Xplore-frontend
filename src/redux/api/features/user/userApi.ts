@@ -26,11 +26,26 @@ const userApi = api.injectEndpoints({
       }),
       providesTags: [tagTypes.user],
     }),
+    getSingleUser: build.query({
+      query: (id) => ({
+        url: `/user/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.user],
+    }),
     updateUser: build.mutation({
       query: (data) => ({
         url: "/user",
         method: "PATCH",
         data: data,
+      }),
+      invalidatesTags: [tagTypes.user],
+    }),
+    updateSingleUser: build.mutation({
+      query: ({ id, userUpdatedInfo }) => ({
+        url: `/user/update-single/${id}`,
+        method: "PATCH",
+        data: userUpdatedInfo,
       }),
       invalidatesTags: [tagTypes.user],
     }),
@@ -51,4 +66,6 @@ export const {
   useUpdateUserMutation,
   useGetAllUserQuery,
   useUpdateUserRoleMutation,
+  useGetSingleUserQuery,
+  useUpdateSingleUserMutation,
 } = userApi;
