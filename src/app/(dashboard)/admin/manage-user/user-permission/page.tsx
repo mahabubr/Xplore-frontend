@@ -2,20 +2,17 @@
 
 import Loader from "@/components/Shared/Loader";
 import XTable from "@/components/UI/XTable";
-import { useGetAllUserQuery } from "@/redux/api/features/user/userApi";
-import { Button, Input, Popconfirm, Tag, message } from "antd";
-import Link from "next/link";
-import { useState } from "react";
 import {
-  DeleteOutlined,
-  EditOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
-import dayjs from "dayjs";
+  useGetAllUserQuery,
+  useUpdateUserRoleMutation,
+} from "@/redux/api/features/user/userApi";
+import { Button, Input, Popconfirm, Tag, message } from "antd";
+import { useState } from "react";
+import { SearchOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { useDebounced } from "@/redux/hooks/useDebounced";
 
-const User = () => {
+const UserPermission = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
@@ -35,6 +32,7 @@ const User = () => {
   }
 
   const { data, isLoading } = useGetAllUserQuery(query);
+  const [updateRole] = useUpdateUserRoleMutation();
 
   if (isLoading) {
     return <Loader />;
@@ -81,36 +79,37 @@ const User = () => {
       },
     },
     {
-      title: "Created Time",
-      dataIndex: "createdAt",
-      render: function (data: any) {
-        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
-      },
-      sorter: true,
-    },
-    {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {
         return (
           <div className="flex items-center gap-2">
-            <Link href={`/admin/`}>
-              <Button
-                onClick={() => message.info(`Maintenance - ${data}`)}
-                type="primary"
-                ghost
-              >
-                <EditOutlined />
-              </Button>
-            </Link>
             <Popconfirm
-              title="Are you sure you want to delete this booking?"
-              onConfirm={() => console.log(data)}
+              title="Are you sure you want to power this user?"
+              onConfirm={() => onChangeRole("super_admin", data)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button type="primary">Make Super Admin</Button>
+            </Popconfirm>
+            <Popconfirm
+              title="Are you sure you want to power this user?"
+              onConfirm={() => onChangeRole("admin", data)}
               okText="Yes"
               cancelText="No"
             >
               <Button type="primary" danger>
-                <DeleteOutlined />
+                Make Admin
+              </Button>
+            </Popconfirm>
+            <Popconfirm
+              title="Are you sure you want to power this user?"
+              onConfirm={() => onChangeRole("tourist", data)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button type="primary" ghost>
+                Make Tourist
               </Button>
             </Popconfirm>
           </div>
@@ -118,6 +117,18 @@ const User = () => {
       },
     },
   ];
+
+  const onChangeRole = async (role: string, id: string) => {
+    message.loading("Updating");
+    try {
+      const res = await updateRole({ role, id }).unwrap();
+      if (res.success) {
+        message.success(res.message);
+      }
+    } catch (error: any) {
+      message.error(error.data.message);
+    }
+  };
 
   const onPaginationChange = (page: number, pageSize: number) => {
     setPage(page);
@@ -151,4 +162,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserPermission;
