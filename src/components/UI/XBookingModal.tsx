@@ -10,6 +10,7 @@ const XBookingModal = ({
   isModalOpen,
   calenderData,
   cartData,
+  openFeedbackModal,
 }: any) => {
   const { data: userData } = useGetProfileQuery({});
   const userInfo = userData?.data;
@@ -48,6 +49,7 @@ const XBookingModal = ({
       if (res.success) {
         message.success(res.message);
         setIsModalOpen(false);
+        openFeedbackModal();
       }
     } catch (error: any) {
       message.error(error.data.message);

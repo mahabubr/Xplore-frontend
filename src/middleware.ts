@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const hybridRoutes = ["/login", "/register", "/"];
-// const touristRoutes = ["/services"];
+const protectedRoutes = ["/services", "/cart"];
 const rolesRedirect: Record<string, unknown> = {
   super_admin: "http://localhost:3000/super-admin",
   admin: "http://localhost:3000/admin",
@@ -25,7 +25,14 @@ export async function middleware(request: NextRequest) {
     (role === "admin" && pathname.startsWith("/admin")) ||
     (role === "super_admin" && pathname.startsWith("/super-admin")) ||
     (role === "tourist" && pathname.startsWith("/tourist"))
-    // (role === "tourist" && touristRoutes.includes(pathname))
+  ) {
+    return NextResponse.next();
+  }
+
+  if (
+    (role === "tourist" && protectedRoutes.includes(pathname)) ||
+    (role === "super_admin" && protectedRoutes.includes(pathname)) ||
+    (role === "admin" && protectedRoutes.includes(pathname))
   ) {
     return NextResponse.next();
   }
@@ -49,6 +56,8 @@ export const config = {
     "/login",
     "/register",
     //tourist routes
+    "/cart",
+    "/services",
     "/tourist/:page*",
     //super admin routes
     "/super-admin/:page*",

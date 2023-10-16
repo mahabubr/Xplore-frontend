@@ -1,5 +1,4 @@
 const ApiError = ({ error }: { error: Record<string, any> }) => {
-  console.log(error);
   return (
     <div className="my-2">
       {error?.data?.errorMessages &&

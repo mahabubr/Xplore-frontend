@@ -46,7 +46,9 @@ const Navbar = () => {
     <nav className="bg-primary  p-4 sticky top-0 z-50 backdrop-blur-xl backdrop:bg-primary bg-white/30">
       <div className="container mx-auto flex justify-between items-center ">
         <div className="flex items-center">
-          <Image src={logo} width={100} height={30} alt="" />
+          <Link href={"/"}>
+            <Image src={logo} width={100} height={30} alt="" />
+          </Link>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
           {routes.map((route) => (

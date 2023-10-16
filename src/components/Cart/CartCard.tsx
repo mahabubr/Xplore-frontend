@@ -21,7 +21,6 @@ const CartCard = ({ services }: { services: iServices }) => {
       if (res.success) {
         message.success(res.message);
       }
-      console.log(res);
     } catch (error: any) {
       message.error(error.data.message);
     }
