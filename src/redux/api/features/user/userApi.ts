@@ -18,6 +18,14 @@ const userApi = api.injectEndpoints({
       }),
       providesTags: [tagTypes.user],
     }),
+    getAllUser: build.query({
+      query: (args) => ({
+        url: "/user",
+        method: "GET",
+        params: args,
+      }),
+      providesTags: [tagTypes.user],
+    }),
     updateUser: build.mutation({
       query: (data) => ({
         url: "/user",
@@ -33,4 +41,5 @@ export const {
   useCreateUserMutation,
   useGetProfileQuery,
   useUpdateUserMutation,
+  useGetAllUserQuery,
 } = userApi;

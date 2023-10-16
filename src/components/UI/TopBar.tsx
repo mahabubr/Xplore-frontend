@@ -99,7 +99,7 @@ const TopBar = ({ colorBgContainer, collapsed, setCollapsed }: any) => {
             overlay={
               <Menu className="w-56">
                 <Menu.Item key="1">
-                  <Link href={profile?.role || ""}>Dashboard</Link>
+                  <Link href={"/"}>Home</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link href={`/${profile?.role}/profile`}>Profile</Link>

@@ -1,4 +1,8 @@
-import { UserOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  HistoryOutlined,
+  ContainerOutlined,
+} from "@ant-design/icons";
 import Link from "next/link";
 
 const sideBarItems = (role: string) => {
@@ -10,7 +14,32 @@ const sideBarItems = (role: string) => {
     },
   ];
 
-  const adminItems = [...commonItems];
+  const adminItems = [
+    ...commonItems,
+    {
+      key: "manage-user",
+      icon: <ContainerOutlined />,
+      label: "Manage User",
+      children: [
+        {
+          label: <Link href={`/admin/manage-user/users`}>All User</Link>,
+          icon: <ContainerOutlined />,
+        },
+        {
+          label: (
+            <Link href={`/admin/manage-user/create-user`}>Create User</Link>
+          ),
+          icon: <ContainerOutlined />,
+        },
+        {
+          label: (
+            <Link href={`/admin/manage-user/user-permission`}>Permissions</Link>
+          ),
+          icon: <ContainerOutlined />,
+        },
+      ],
+    },
+  ];
 
   const superAdminItems = [...commonItems];
 
@@ -18,7 +47,7 @@ const sideBarItems = (role: string) => {
     ...commonItems,
     {
       key: "booking-history",
-      icon: <UserOutlined />,
+      icon: <HistoryOutlined />,
       label: <Link href={`/tourist/booking-history`}>Booking History</Link>,
     },
   ];
