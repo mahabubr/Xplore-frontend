@@ -3,6 +3,7 @@ import {
   HistoryOutlined,
   ContainerOutlined,
   RadiusSettingOutlined,
+  MonitorOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 
@@ -52,6 +53,21 @@ const sideBarItems = (role: string) => {
             <Link href={`/admin/manage-services/services`}>All Services</Link>
           ),
           icon: <RadiusSettingOutlined />,
+        },
+      ],
+    },
+    {
+      key: "booking-services",
+      icon: <MonitorOutlined />,
+      label: "Booking Services",
+      children: [
+        {
+          label: (
+            <Link href={`/admin/booking-services/bookings`}>
+              All Bookings
+            </Link>
+          ),
+          icon: <MonitorOutlined />,
         },
       ],
     },

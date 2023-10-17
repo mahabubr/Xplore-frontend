@@ -98,12 +98,18 @@ body {
   transition: opacity 300ms, transform 300ms;
 }
 
-
-
 .banner {
   background-color: #3498db;
   color: red;
   text-align: center;
   padding: 20px;
   font-size: 24px;
+}
+
+/* custom-tooltip.css */
+.custom-tooltip {
+  max-width: 5000px;
+  width: auto;
+  white-space: nowrap;
+  background-color: white;
 }

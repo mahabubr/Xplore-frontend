@@ -90,3 +90,8 @@ export const serviceCategoryOptions = [
   { value: "pilgrimage", label: "pilgrimage" },
   { value: "honeymoon", label: "honeymoon" },
 ];
+
+export const bookingStatusTypes = [
+  { value: "APPROVED", label: "APPROVED" },
+  { value: "REJECTED", label: "REJECTED" },
+];

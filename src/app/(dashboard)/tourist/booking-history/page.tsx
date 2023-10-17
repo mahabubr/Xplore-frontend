@@ -64,7 +64,13 @@ const BookingHistory = () => {
       title: "Status",
       dataIndex: "status",
       render: function (data: any) {
-        return <Tag color="success">{data}</Tag>;
+        return data === "PENDING" ? (
+          <Tag color="processing">{data}</Tag>
+        ) : data === "APPROVED" ? (
+          <Tag color="success">{data}</Tag>
+        ) : (
+          <Tag color="error">{data}</Tag>
+        );
       },
     },
     {

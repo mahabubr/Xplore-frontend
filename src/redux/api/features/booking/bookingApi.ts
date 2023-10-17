@@ -11,6 +11,14 @@ const bookingApi = api.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.booking],
     }),
+    getAllBooking: build.query({
+      query: (args) => ({
+        url: "/booking",
+        method: "GET",
+        params: args,
+      }),
+      providesTags: [tagTypes.booking],
+    }),
     getBooking: build.query({
       query: (args) => ({
         url: "/booking/user-by",
@@ -18,6 +26,22 @@ const bookingApi = api.injectEndpoints({
         params: args,
       }),
       providesTags: [tagTypes.booking],
+    }),
+    updateBookingByStatus: build.mutation({
+      query: ({ id, data }) => ({
+        url: `/booking/${id}`,
+        method: "PATCH",
+        data: data,
+      }),
+      invalidatesTags: [tagTypes.booking],
+    }),
+    updateBookingSchedule: build.mutation({
+      query: ({ id, data }) => ({
+        url: `/booking/schedule/${id}`,
+        method: "PATCH",
+        data: data,
+      }),
+      invalidatesTags: [tagTypes.booking],
     }),
     deleteBooking: build.mutation({
       query: (id) => ({
@@ -33,4 +57,7 @@ export const {
   useCreateBookingMutation,
   useGetBookingQuery,
   useDeleteBookingMutation,
+  useGetAllBookingQuery,
+  useUpdateBookingByStatusMutation,
+  useUpdateBookingScheduleMutation,
 } = bookingApi;
