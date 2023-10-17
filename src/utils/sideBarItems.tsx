@@ -32,12 +32,6 @@ const sideBarItems = (role: string) => {
           label: <Link href={`/admin/manage-user/users`}>All User</Link>,
           icon: <ContainerOutlined />,
         },
-        {
-          label: (
-            <Link href={`/admin/manage-user/user-permission`}>Permissions</Link>
-          ),
-          icon: <ContainerOutlined />,
-        },
       ],
     },
     {
@@ -63,7 +57,36 @@ const sideBarItems = (role: string) => {
     },
   ];
 
-  const superAdminItems = [...commonItems];
+  const superAdminItems = [
+    ...commonItems,
+    {
+      key: "manage-user",
+      icon: <ContainerOutlined />,
+      label: "Manage User",
+      children: [
+        {
+          label: (
+            <Link href={`/super-admin/manage-user/create-user`}>
+              Create User
+            </Link>
+          ),
+          icon: <ContainerOutlined />,
+        },
+        {
+          label: <Link href={`/super-admin/manage-user/users`}>All User</Link>,
+          icon: <ContainerOutlined />,
+        },
+        {
+          label: (
+            <Link href={`/super-admin/manage-user/user-permission`}>
+              Permissions
+            </Link>
+          ),
+          icon: <ContainerOutlined />,
+        },
+      ],
+    },
+  ];
 
   const touristItems = [
     ...commonItems,

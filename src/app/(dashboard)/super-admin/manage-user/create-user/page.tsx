@@ -10,14 +10,16 @@ import { useState } from "react";
 const CreateUser = () => {
   const [createUser] = useCreateUserMutation();
   const [error, setError] = useState<any>({});
+  const [role, setRole] = useState("");
 
   const onSubmit = async (data: any) => {
-    data["role"] = "tourist";
+    data["role"] = role;
     try {
       const res = await createUser(data).unwrap();
       if (res.success) {
         message.success(res.message);
         setError({});
+        setRole("");
       }
     } catch (error: any) {
       setError(error);
@@ -42,6 +44,16 @@ const CreateUser = () => {
             label="Password"
             placeholder="******"
             type="password"
+          />
+          <Select
+            className="w-full h-10"
+            value={role ? role : "Add Role"}
+            onChange={(value) => setRole(value)}
+            options={[
+              { value: "super_admin", label: "Super Admin" },
+              { value: "admin", label: "Admin" },
+              { value: "tourist", label: "Tourist" },
+            ]}
           />
         </div>
         <ApiError error={error} />

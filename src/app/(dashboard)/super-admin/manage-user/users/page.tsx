@@ -2,10 +2,7 @@
 
 import Loader from "@/components/Shared/Loader";
 import XTable from "@/components/UI/XTable";
-import {
-  useDeleteUserMutation,
-  useGetAllUserQuery,
-} from "@/redux/api/features/user/userApi";
+import { useGetAllUserQuery } from "@/redux/api/features/user/userApi";
 import { Button, Input, Popconfirm, Tag, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
@@ -27,7 +24,6 @@ const User = () => {
 
   query["limit"] = size;
   query["page"] = page;
-  query["role"] = "tourist";
 
   const debouncedSearchTerm = useDebounced({
     searchQuery: searchTerm,
@@ -39,7 +35,6 @@ const User = () => {
   }
 
   const { data, isLoading } = useGetAllUserQuery(query);
-  const [deleteUser] = useDeleteUserMutation();
 
   if (isLoading) {
     return <Loader />;
@@ -106,7 +101,7 @@ const User = () => {
             </Link>
             <Popconfirm
               title="Are you sure you want to delete this booking?"
-              onConfirm={() => onUserDelete(data)}
+              onConfirm={() => console.log(data)}
               okText="Yes"
               cancelText="No"
             >
@@ -119,17 +114,6 @@ const User = () => {
       },
     },
   ];
-
-  const onUserDelete = async (id: string) => {
-    try {
-      const res = await deleteUser(id).unwrap();
-      if (res.success) {
-        message.success(res.message);
-      }
-    } catch (error: any) {
-      message.error(error.data.message);
-    }
-  };
 
   const onPaginationChange = (page: number, pageSize: number) => {
     setPage(page);
