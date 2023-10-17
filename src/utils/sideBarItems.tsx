@@ -63,9 +63,7 @@ const sideBarItems = (role: string) => {
       children: [
         {
           label: (
-            <Link href={`/admin/booking-services/bookings`}>
-              All Bookings
-            </Link>
+            <Link href={`/admin/booking-services/bookings`}>All Bookings</Link>
           ),
           icon: <MonitorOutlined />,
         },
@@ -82,19 +80,19 @@ const sideBarItems = (role: string) => {
       children: [
         {
           label: (
-            <Link href={`/super-admin/manage-user/create-user`}>
+            <Link href={`/super_admin/manage-user/create-user`}>
               Create User
             </Link>
           ),
           icon: <ContainerOutlined />,
         },
         {
-          label: <Link href={`/super-admin/manage-user/users`}>All User</Link>,
+          label: <Link href={`/super_admin/manage-user/users`}>All User</Link>,
           icon: <ContainerOutlined />,
         },
         {
           label: (
-            <Link href={`/super-admin/manage-user/user-permission`}>
+            <Link href={`/super_admin/manage-user/user-permission`}>
               Permissions
             </Link>
           ),

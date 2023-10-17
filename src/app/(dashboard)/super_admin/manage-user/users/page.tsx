@@ -76,8 +76,14 @@ const User = () => {
     {
       title: "Role",
       dataIndex: "role",
-      render: function (data: any) {
-        return <Tag color="processing">{data}</Tag>;
+      render: function (data: any, i: any) {
+        return i.role === "admin" ? (
+          <Tag color="error">{data}</Tag>
+        ) : i.role === "super_admin" ? (
+          <Tag color="success">{data}</Tag>
+        ) : (
+          <Tag color="processing">{data}</Tag>
+        );
       },
     },
     {
@@ -94,7 +100,7 @@ const User = () => {
       render: function (data: any) {
         return (
           <div className="flex items-center gap-2">
-            <Link href={`/admin/manage-user/users/${data}`}>
+            <Link href={`/super_admin/manage-user/users/${data}`}>
               <Button type="primary" ghost>
                 <EditOutlined />
               </Button>

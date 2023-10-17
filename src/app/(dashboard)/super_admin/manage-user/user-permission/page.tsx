@@ -74,44 +74,88 @@ const UserPermission = () => {
     {
       title: "Role",
       dataIndex: "role",
-      render: function (data: any) {
-        return <Tag color="processing">{data}</Tag>;
+      render: function (data: any, i: any) {
+        return i.role === "admin" ? (
+          <Tag color="error">{data}</Tag>
+        ) : i.role === "super_admin" ? (
+          <Tag color="success">{data}</Tag>
+        ) : (
+          <Tag color="processing">{data}</Tag>
+        );
       },
     },
     {
       title: "Action",
       dataIndex: "id",
-      render: function (data: any) {
+      render: function (data: any, i: any) {
         return (
-          <div className="flex items-center gap-2">
-            <Popconfirm
-              title="Are you sure you want to power this user?"
-              onConfirm={() => onChangeRole("super_admin", data)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button type="primary">Make Super Admin</Button>
-            </Popconfirm>
-            <Popconfirm
-              title="Are you sure you want to power this user?"
-              onConfirm={() => onChangeRole("admin", data)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button type="primary" danger>
-                Make Admin
-              </Button>
-            </Popconfirm>
-            <Popconfirm
-              title="Are you sure you want to power this user?"
-              onConfirm={() => onChangeRole("tourist", data)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button type="primary" ghost>
-                Make Tourist
-              </Button>
-            </Popconfirm>
+          <div className="flex justify-around items-center gap-2">
+            {i.role === "admin" ? (
+              <>
+                <Popconfirm
+                  title="Are you sure you want to power this user?"
+                  onConfirm={() => onChangeRole("super_admin", data)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button type="primary">Make Super Admin</Button>
+                </Popconfirm>
+                <Popconfirm
+                  title="Are you sure you want to power this user?"
+                  onConfirm={() => onChangeRole("tourist", data)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button type="primary" ghost>
+                    Make Tourist
+                  </Button>
+                </Popconfirm>
+              </>
+            ) : i.role === "super_admin" ? (
+              <>
+                <Popconfirm
+                  title="Are you sure you want to power this user?"
+                  onConfirm={() => onChangeRole("admin", data)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button type="primary" danger>
+                    Make Admin
+                  </Button>
+                </Popconfirm>
+                <Popconfirm
+                  title="Are you sure you want to power this user?"
+                  onConfirm={() => onChangeRole("tourist", data)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button type="primary" ghost>
+                    Make Tourist
+                  </Button>
+                </Popconfirm>
+              </>
+            ) : (
+              <>
+                <Popconfirm
+                  title="Are you sure you want to power this user?"
+                  onConfirm={() => onChangeRole("super_admin", data)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button type="primary">Make Super Admin</Button>
+                </Popconfirm>
+                <Popconfirm
+                  title="Are you sure you want to power this user?"
+                  onConfirm={() => onChangeRole("admin", data)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button type="primary" danger>
+                    Make Admin
+                  </Button>
+                </Popconfirm>
+              </>
+            )}
           </div>
         );
       },

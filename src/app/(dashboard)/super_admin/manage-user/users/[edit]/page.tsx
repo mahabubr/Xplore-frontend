@@ -43,7 +43,7 @@ const EditUserByAdmin = ({ params }: any) => {
       if (res.success) {
         message.success(res.message);
         setError("");
-        router.push("/admin/manage-user/users");
+        router.push("/super_admin/manage-user/users");
       }
     } catch (error: any) {
       setError(error);
