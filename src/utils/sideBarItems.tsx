@@ -2,6 +2,7 @@ import {
   UserOutlined,
   HistoryOutlined,
   ContainerOutlined,
+  RadiusSettingOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 
@@ -22,13 +23,13 @@ const sideBarItems = (role: string) => {
       label: "Manage User",
       children: [
         {
-          label: <Link href={`/admin/manage-user/users`}>All User</Link>,
-          icon: <ContainerOutlined />,
-        },
-        {
           label: (
             <Link href={`/admin/manage-user/create-user`}>Create User</Link>
           ),
+          icon: <ContainerOutlined />,
+        },
+        {
+          label: <Link href={`/admin/manage-user/users`}>All User</Link>,
           icon: <ContainerOutlined />,
         },
         {
@@ -36,6 +37,27 @@ const sideBarItems = (role: string) => {
             <Link href={`/admin/manage-user/user-permission`}>Permissions</Link>
           ),
           icon: <ContainerOutlined />,
+        },
+      ],
+    },
+    {
+      key: "manage-services",
+      icon: <RadiusSettingOutlined />,
+      label: "Manage Services",
+      children: [
+        {
+          label: (
+            <Link href={`/admin/manage-services/create-services`}>
+              Create Services
+            </Link>
+          ),
+          icon: <RadiusSettingOutlined />,
+        },
+        {
+          label: (
+            <Link href={`/admin/manage-services/services`}>All Services</Link>
+          ),
+          icon: <RadiusSettingOutlined />,
         },
       ],
     },

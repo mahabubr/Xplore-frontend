@@ -58,13 +58,7 @@ const UploadImage = ({ name }: ImageUploadProps) => {
   const uploadButton = (
     <div>
       <Tooltip title="Click here to upload" color="#87CEEB" open>
-        <Image
-          src={userData?.image}
-          alt="avatar"
-          width={100}
-          height={100}
-          className="rounded-full object-cover"
-        />{" "}
+        Upload
       </Tooltip>
     </div>
   );

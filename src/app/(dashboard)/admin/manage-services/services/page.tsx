@@ -2,17 +2,21 @@
 
 import Loader from "@/components/Shared/Loader";
 import XTable from "@/components/UI/XTable";
-import {
-  useGetAllUserQuery,
-  useUpdateUserRoleMutation,
-} from "@/redux/api/features/user/userApi";
 import { Button, Input, Popconfirm, Tag, message } from "antd";
+import Link from "next/link";
 import { useState } from "react";
-import { SearchOutlined } from "@ant-design/icons";
-import Image from "next/image";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
+import {
+  useDeleteServicesMutation,
+  useGetServicesQuery,
+} from "@/redux/api/features/services/servicesApi";
 import { useDebounced } from "@/redux/hooks/useDebounced";
 
-const UserPermission = () => {
+const Services = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
@@ -31,52 +35,48 @@ const UserPermission = () => {
     query["searchTerm"] = debouncedSearchTerm;
   }
 
-  const { data, isLoading } = useGetAllUserQuery(query);
-  const [updateRole] = useUpdateUserRoleMutation();
+  const { data, isLoading } = useGetServicesQuery(query);
+
+  const [deleteService] = useDeleteServicesMutation();
 
   if (isLoading) {
     return <Loader />;
   }
 
-  const userData = data?.data;
-  const meta = data?.meta;
+  const booking = data?.data?.data;
+  const meta = data?.data?.meta;
 
   const columns = [
     {
-      title: "Image",
-      dataIndex: "image",
+      title: "Title",
+      dataIndex: "title",
+    },
+    {
+      title: "Day",
+      dataIndex: "day",
+    },
+    {
+      title: "Month",
+      dataIndex: "how_month",
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+    },
+    {
+      title: "Category",
+      dataIndex: "category",
+    },
+    {
+      title: "Availability",
+      dataIndex: "availabilityType",
       render: function (data: any) {
-        if (data) {
-          return (
-            <>
-              <Image
-                src={data}
-                alt=""
-                height={50}
-                width={50}
-                className="rounded-xl object-cover"
-              />
-            </>
-          );
-        } else {
-          return null;
-        }
+        return <Tag color="success">{data}</Tag>;
       },
     },
     {
-      title: "Name",
-      dataIndex: "name",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-    },
-    {
-      title: "Role",
-      dataIndex: "role",
-      render: function (data: any) {
-        return <Tag color="processing">{data}</Tag>;
-      },
+      title: "Location",
+      dataIndex: "location",
     },
     {
       title: "Action",
@@ -84,32 +84,19 @@ const UserPermission = () => {
       render: function (data: any) {
         return (
           <div className="flex items-center gap-2">
+            <Link href={`/admin/manage-services/services/${data}`}>
+              <Button type="primary" ghost>
+                <EditOutlined />
+              </Button>
+            </Link>
             <Popconfirm
-              title="Are you sure you want to power this user?"
-              onConfirm={() => onChangeRole("super_admin", data)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button type="primary">Make Super Admin</Button>
-            </Popconfirm>
-            <Popconfirm
-              title="Are you sure you want to power this user?"
-              onConfirm={() => onChangeRole("admin", data)}
+              title="Are you sure you want to delete this booking?"
+              onConfirm={() => onDelete(data)}
               okText="Yes"
               cancelText="No"
             >
               <Button type="primary" danger>
-                Make Admin
-              </Button>
-            </Popconfirm>
-            <Popconfirm
-              title="Are you sure you want to power this user?"
-              onConfirm={() => onChangeRole("tourist", data)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button type="primary" ghost>
-                Make Tourist
+                <DeleteOutlined />
               </Button>
             </Popconfirm>
           </div>
@@ -118,10 +105,9 @@ const UserPermission = () => {
     },
   ];
 
-  const onChangeRole = async (role: string, id: string) => {
-    message.loading("Updating");
+  const onDelete = async (id: string) => {
     try {
-      const res = await updateRole({ role, id }).unwrap();
+      const res = await deleteService(id).unwrap();
       if (res.success) {
         message.success(res.message);
       }
@@ -153,7 +139,7 @@ const UserPermission = () => {
       <XTable
         loading={isLoading}
         columns={columns}
-        dataSource={userData}
+        dataSource={booking}
         pageSize={size}
         totalPages={meta?.total}
         showSizeChanger={true}
@@ -165,4 +151,4 @@ const UserPermission = () => {
   );
 };
 
-export default UserPermission;
+export default Services;
