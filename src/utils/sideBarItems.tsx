@@ -4,6 +4,7 @@ import {
   ContainerOutlined,
   RadiusSettingOutlined,
   MonitorOutlined,
+  ControlOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 
@@ -66,6 +67,31 @@ const sideBarItems = (role: string) => {
             <Link href={`/admin/booking-services/bookings`}>All Bookings</Link>
           ),
           icon: <MonitorOutlined />,
+        },
+      ],
+    },
+    {
+      key: "content-management",
+      icon: <ControlOutlined />,
+      label: "Content Management",
+      children: [
+        {
+          label: "Blog",
+          icon: <ControlOutlined />,
+          children: [
+            {
+              label: (
+                <Link href={`/admin/content-management/blog`}>All Blog</Link>
+              ),
+              icon: <ControlOutlined />,
+            },
+            {
+              label: (
+                <Link href={`/admin/content-management/blog/create-blog`}>Create Blog</Link>
+              ),
+              icon: <ControlOutlined />,
+            },
+          ],
         },
       ],
     },

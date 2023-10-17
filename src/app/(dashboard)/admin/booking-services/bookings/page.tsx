@@ -197,7 +197,7 @@ const Bookings = () => {
 
   return (
     <div>
-      <Input
+      {/* <Input
         size="large"
         placeholder="Find your destination"
         className="my-5"
@@ -206,7 +206,7 @@ const Bookings = () => {
           setPage(1);
         }}
         suffix={<SearchOutlined />}
-      />
+      /> */}
       <XTable
         loading={isLoading}
         columns={columns}
