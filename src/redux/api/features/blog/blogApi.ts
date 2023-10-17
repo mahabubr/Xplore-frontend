@@ -1,7 +1,7 @@
 import { tagTypes } from "@/redux/tags/types";
 import api from "../../api";
 
-const bookingApi = api.injectEndpoints({
+const blogApi = api.injectEndpoints({
   endpoints: (build) => ({
     createBlog: build.mutation({
       query: (data) => ({
@@ -50,4 +50,4 @@ export const {
   useGetSingleBlogQuery,
   useUpdateBlogMutation,
   useDeleteBlogMutation,
-} = bookingApi;
+} = blogApi;

@@ -3,16 +3,16 @@
 import Form from "@/components/Froms/Form";
 import FormInput from "@/components/Froms/FormInput";
 import FormTextArea from "@/components/Froms/FormTextArea";
-import { useCreateBlogMutation } from "@/redux/api/features/blog/blogApi";
+import { useCreateFAQMutation } from "@/redux/api/features/faq/faqApi";
 import { Button, message } from "antd";
 
 const CreateBlog = () => {
-  const [createBlog] = useCreateBlogMutation();
+  const [createFaq] = useCreateFAQMutation();
 
   const onSubmit = async (data: any) => {
     message.loading("Creating...");
     try {
-      const res = await createBlog(data).unwrap();
+      const res = await createFaq(data).unwrap();
       if (res?.success) {
         message.success(res.message);
       }
@@ -33,7 +33,7 @@ const CreateBlog = () => {
           rows={10}
         />
         <br />
-        <Button htmlType="submit">Create Blog</Button>
+        <Button htmlType="submit">Create FAQ</Button>
       </Form>
     </div>
   );

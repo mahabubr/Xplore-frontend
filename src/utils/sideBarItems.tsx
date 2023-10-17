@@ -87,7 +87,29 @@ const sideBarItems = (role: string) => {
             },
             {
               label: (
-                <Link href={`/admin/content-management/blog/create-blog`}>Create Blog</Link>
+                <Link href={`/admin/content-management/blog/create-blog`}>
+                  Create Blog
+                </Link>
+              ),
+              icon: <ControlOutlined />,
+            },
+          ],
+        },
+        {
+          label: "FAQ",
+          icon: <ControlOutlined />,
+          children: [
+            {
+              label: (
+                <Link href={`/admin/content-management/faq`}>All FAQ</Link>
+              ),
+              icon: <ControlOutlined />,
+            },
+            {
+              label: (
+                <Link href={`/admin/content-management/faq/create-faq`}>
+                  Create FAQ
+                </Link>
               ),
               icon: <ControlOutlined />,
             },
