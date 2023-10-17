@@ -1,10 +1,12 @@
 "use client";
 
+import AvailableService from "@/components/Services/AvailableService";
 import ServiceDate from "@/components/Services/ServiceDate";
 import ServiceFilter from "@/components/Services/ServiceFilter/ServiceFilter";
 import ServiceNameFilter from "@/components/Services/ServiceNameFilter";
 import ServicePriceHighToLow from "@/components/Services/ServicePriceHighToLow";
 import ServicesPriceLowToHigh from "@/components/Services/ServicesPriceLowToHigh";
+import UpcomingService from "@/components/Services/UpcomingService";
 import DraggableTabNode from "@/components/UI/DraggableTabNode";
 import type { DragEndEvent } from "@dnd-kit/core";
 import { DndContext, PointerSensor, useSensor } from "@dnd-kit/core";
@@ -20,9 +22,19 @@ import { useState } from "react";
 const Services = () => {
   const [items, setItems] = useState([
     {
-      key: "latest",
-      label: "Latest",
+      key: "all-services",
+      label: "All Services",
       children: <ServiceDate />,
+    },
+    {
+      key: "available-service",
+      label: "Available Service",
+      children: <AvailableService />,
+    },
+    {
+      key: "upcoming-service",
+      label: "Upcoming Service",
+      children: <UpcomingService />,
     },
     {
       key: "priceLow",

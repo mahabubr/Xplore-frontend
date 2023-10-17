@@ -2,7 +2,7 @@
 
 import Loader from "@/components/Shared/Loader";
 import XTable from "@/components/UI/XTable";
-import { Button, Input, Popconfirm, Tag, message } from "antd";
+import { Button, Input, Popconfirm, Select, Tag, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -15,6 +15,7 @@ import {
   useGetServicesQuery,
 } from "@/redux/api/features/services/servicesApi";
 import { useDebounced } from "@/redux/hooks/useDebounced";
+import { availabilityTypeOptions } from "@/constants/services";
 
 const Services = () => {
   const query: Record<string, any> = {};
@@ -22,9 +23,11 @@ const Services = () => {
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [availabilityType, setAvailabilityType] = useState<string>("");
 
   query["limit"] = size;
   query["page"] = page;
+  query["availabilityType"] = availabilityType;
 
   const debouncedSearchTerm = useDebounced({
     searchQuery: searchTerm,
@@ -81,7 +84,7 @@ const Services = () => {
     {
       title: "Action",
       dataIndex: "id",
-      render: function (data: any) {
+      render: function (data: any, i: any) {
         return (
           <div className="flex items-center gap-2">
             <Link href={`/admin/manage-services/services/${data}`}>
@@ -89,16 +92,30 @@ const Services = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Popconfirm
-              title="Are you sure you want to delete this booking?"
-              onConfirm={() => onDelete(data)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button type="primary" danger>
+            {i.availabilityType === "UPCOMING" ? (
+              <Popconfirm
+                title="Are you sure you want to delete this booking?"
+                onConfirm={() => onDelete(data)}
+                okText="Yes"
+                cancelText="No"
+              >
+                <Button type="primary" danger>
+                  <DeleteOutlined />
+                </Button>
+              </Popconfirm>
+            ) : (
+              <Button
+                onClick={() =>
+                  message.error(
+                    "Is now ongoing so not deleted available. you can delete upcoming services"
+                  )
+                }
+                type="primary"
+                danger
+              >
                 <DeleteOutlined />
               </Button>
-            </Popconfirm>
+            )}
           </div>
         );
       },
@@ -136,6 +153,15 @@ const Services = () => {
         }}
         suffix={<SearchOutlined />}
       />
+      <div className="mb-5">
+        <Select
+          defaultValue="Select Availability"
+          style={{ width: 200 }}
+          onChange={(value) => setAvailabilityType(value)}
+          options={availabilityTypeOptions}
+        />
+        <Button onClick={() => setAvailabilityType("")}>Reset</Button>
+      </div>
       <XTable
         loading={isLoading}
         columns={columns}

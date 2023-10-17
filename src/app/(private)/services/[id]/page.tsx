@@ -165,13 +165,19 @@ const SingleService = ({ params }: any) => {
           </Col>
           <Col span={6}>
             <div>
-              <Button
-                onClick={() => handleAddToCart(data?.data)}
-                type="primary"
-                className="w-full"
-              >
-                Add To Card
-              </Button>
+              {availabilityType === "AVAILABLE" ? (
+                <Button
+                  onClick={() => handleAddToCart(data?.data)}
+                  type="primary"
+                  className="w-full"
+                >
+                  Add To Card
+                </Button>
+              ) : (
+                <p className="text-center  mt-10 text-nature">
+                  Wait for Available for Booking
+                </p>
+              )}
             </div>
             <div className="mt-5">
               <Button className="w-full h-20" type="dashed">

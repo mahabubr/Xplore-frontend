@@ -9,7 +9,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useDebounced } from "@/redux/hooks/useDebounced";
 import { useSelector } from "react-redux";
 
-const ServiceNameFilter = () => {
+const AvailableService = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
@@ -23,8 +23,6 @@ const ServiceNameFilter = () => {
 
   query["limit"] = size;
   query["page"] = page;
-  query["sortBy"] = "title";
-  query["sortOrder"] = "asc";
   query["minPrice"] = minPrice;
   query["maxPrice"] = maxPrice;
   query["month"] = month;
@@ -84,4 +82,4 @@ const ServiceNameFilter = () => {
   );
 };
 
-export default ServiceNameFilter;
+export default AvailableService;

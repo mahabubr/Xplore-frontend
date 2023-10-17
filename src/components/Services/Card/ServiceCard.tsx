@@ -1,6 +1,10 @@
 import { iServices } from "@/interface/api";
-import { CalendarFilled, UserAddOutlined } from "@ant-design/icons";
-import { Card } from "antd";
+import {
+  CalendarFilled,
+  UserAddOutlined,
+  SafetyCertificateFilled,
+} from "@ant-design/icons";
+import { Card, Tag } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,8 +17,17 @@ const ServiceCard = ({
   service: iServices;
   isLoading: boolean;
 }) => {
-  const { title, price, location, image, description, day, availability, id } =
-    service;
+  const {
+    title,
+    price,
+    location,
+    image,
+    description,
+    day,
+    availability,
+    id,
+    availabilityType,
+  } = service;
 
   return (
     <Link href={`/services/${id}`}>
@@ -33,6 +46,23 @@ const ServiceCard = ({
           </div>,
         ]}
       >
+        {availabilityType === "AVAILABLE" ? (
+          <Tag
+            className="mb-5"
+            icon={<SafetyCertificateFilled />}
+            color="#FF6600"
+          >
+            {availabilityType}
+          </Tag>
+        ) : (
+          <Tag
+            className="mb-5"
+            icon={<SafetyCertificateFilled />}
+            color="#87CEEB"
+          >
+            {availabilityType}
+          </Tag>
+        )}
         <Meta title={title} description={description.slice(0, 50) + " ..."} />
         <div className="mt-5">
           <p className="text-lg font-semibold text-sunset">${price}</p>

@@ -29,6 +29,8 @@ const ServicePriceHighToLow = () => {
   query["maxPrice"] = maxPrice;
   query["month"] = month;
   query["location"] = location;
+    query["availabilityType"] = "AVAILABLE";
+
 
   const debouncedSearchTerm = useDebounced({
     searchQuery: searchTerm,
