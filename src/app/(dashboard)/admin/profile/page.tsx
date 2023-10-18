@@ -15,6 +15,8 @@ import {
 } from "@/redux/api/features/user/userApi";
 import Loader from "@/components/Shared/Loader";
 import UploadImage from "@/components/UI/UploadImage";
+import handleCloudinaryImageUpload from "@/components/Home/CloudinaryImageUploader";
+import pollForImageAvailability from "@/hooks/pollForImageAvailability";
 
 const TouristProfile = () => {
   const { data: userInfo, isLoading } = useGetProfileQuery({});
@@ -52,12 +54,18 @@ const TouristProfile = () => {
     message.loading("Updating...");
 
     try {
-      console.log(data);
+      const images = await handleCloudinaryImageUpload(data?.file);
+      console.log(images);
+      await pollForImageAvailability(images);
+      const res = await updateUser({ image: images }).unwrap();
+      if (res.success) {
+        message.success(res.message);
+      }
+      console.log(res);
     } catch (error: any) {
-      message.error(error.data.message);
+      console.log(error);
     }
   };
-
   return (
     <div>
       <Row gutter={50}>
