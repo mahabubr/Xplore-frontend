@@ -20,6 +20,7 @@ export interface iServices {
   createdAt: string;
   updatedAt: string;
   review: any[];
+  category: string;
 }
 
 export interface iDebounced {

@@ -10,6 +10,11 @@ const XSelect = ({ setLocation }: any) => {
     label: item.location,
   }));
 
+  const unique = service?.filter(
+    (item: any, index: number, array: [any]) =>
+      array.findIndex((i) => i.value === item.value) === index
+  );
+
   return (
     <Select
       showSearch
@@ -25,7 +30,7 @@ const XSelect = ({ setLocation }: any) => {
           .toLowerCase()
           .localeCompare((optionB?.label?.toString() ?? "").toLowerCase())
       }
-      options={service}
+      options={unique}
     />
   );
 };

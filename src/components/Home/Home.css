@@ -1,0 +1,113 @@
+/* Add this custom CSS to your Home.css file or a separate CSS file */
+.banner-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.zoom-background {
+  background-image: url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1642");
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  animation: zoomInOut 6s ease-in-out infinite alternate;
+  filter: brightness(60%);
+}
+
+.zoom-background1 {
+  background-image: url("https://images.unsplash.com/photo-1692604493528-da7d98d1b581?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1626");
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  animation: zoomInOut 6s ease-in-out infinite alternate;
+  filter: brightness(60%);
+}
+
+.zoom-background2 {
+  background-image: url("https://images.unsplash.com/photo-1566873535350-a3f5d4a804b7?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470");
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  animation: zoomInOut 6s ease-in-out infinite alternate;
+  filter: brightness(60%);
+}
+
+.zoom-background3 {
+  background-image: url("https://images.unsplash.com/photo-1675000991437-f9744d9bd5f9?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470");
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  animation: zoomInOut 6s ease-in-out infinite alternate;
+  filter: brightness(60%);
+}
+
+.zoom-background4 {
+  background-image: url("https://images.unsplash.com/photo-1632849749273-6f88a8361b00?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470");
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  animation: zoomInOut 6s ease-in-out infinite alternate;
+  filter: brightness(60%);
+}
+
+@keyframes zoomInOut {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Apply the slide-in animations to the text elements */
+.text-a {
+  opacity: 0;
+  animation: fadeIn 5s ease-in-out forwards infinite;
+}
+
+.font-b {
+  animation: slideFromTop 5s ease-in-out forwards infinite;
+}
+
+.font-c {
+  animation: slideFromBottom 5s ease-in-out forwards infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -27,6 +27,7 @@ const ServiceCard = ({
     availability,
     id,
     availabilityType,
+    category
   } = service;
 
   return (
@@ -66,6 +67,12 @@ const ServiceCard = ({
         <Meta title={title} description={description.slice(0, 50) + " ..."} />
         <div className="mt-5">
           <p className="text-lg font-semibold text-sunset">${price}</p>
+          <p
+            className="text-sm my-3 font-semibold text-nature p-2 inline-block rounded"
+            style={{ border: "1px solid #228B22" }}
+          >
+            {category}
+          </p>
           <p className="text-neutral">{location}</p>
         </div>
       </Card>
