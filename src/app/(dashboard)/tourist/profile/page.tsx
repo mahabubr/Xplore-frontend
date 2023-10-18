@@ -15,6 +15,8 @@ import {
 } from "@/redux/api/features/user/userApi";
 import Loader from "@/components/Shared/Loader";
 import UploadImage from "@/components/UI/UploadImage";
+import handleCloudinaryImageUpload from "@/components/Home/CloudinaryImageUploader";
+import pollForImageAvailability from "@/hooks/pollForImageAvailability";
 
 const TouristProfile = () => {
   const { data: userInfo, isLoading } = useGetProfileQuery({});
@@ -33,8 +35,6 @@ const TouristProfile = () => {
       name: data?.name || userData.name,
       phone: data?.phone || userData.phone,
       address: data?.address || userData.address,
-      image:
-        "https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80",
     };
 
     try {
@@ -52,9 +52,15 @@ const TouristProfile = () => {
     message.loading("Updating...");
 
     try {
-      console.log(data);
+      const images = await handleCloudinaryImageUpload(data?.file);
+      await pollForImageAvailability(images);
+      const res = await updateUser({ image: images }).unwrap();
+      if (res.success) {
+        message.success(res.message);
+      }
+      console.log(res);
     } catch (error: any) {
-      message.error(error.data.message);
+      console.log(error);
     }
   };
 

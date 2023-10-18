@@ -148,6 +148,11 @@ const sideBarItems = (role: string) => {
         },
       ],
     },
+    {
+      key: "feedback",
+      icon: <HistoryOutlined />,
+      label: <Link href={`/super_admin/feedback`}>Feedback</Link>,
+    },
   ];
 
   const touristItems = [

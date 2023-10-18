@@ -35,8 +35,6 @@ const TouristProfile = () => {
       name: data?.name || userData.name,
       phone: data?.phone || userData.phone,
       address: data?.address || userData.address,
-      image:
-        "https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80",
     };
 
     try {
@@ -55,7 +53,6 @@ const TouristProfile = () => {
 
     try {
       const images = await handleCloudinaryImageUpload(data?.file);
-      console.log(images);
       await pollForImageAvailability(images);
       const res = await updateUser({ image: images }).unwrap();
       if (res.success) {
@@ -66,6 +63,7 @@ const TouristProfile = () => {
       console.log(error);
     }
   };
+  
   return (
     <div>
       <Row gutter={50}>

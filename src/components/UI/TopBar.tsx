@@ -1,3 +1,5 @@
+"use client";
+
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -11,45 +13,7 @@ import { Layout, Button, Avatar, Select, Dropdown, Menu } from "antd";
 import Image from "next/image";
 import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
 import { signOut } from "next-auth/react";
-
-const items: MenuProps["items"] = [
-  {
-    key: "1",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        3rd menu item
-      </a>
-    ),
-  },
-];
+import { useGetAllBookingQuery } from "@/redux/api/features/booking/bookingApi";
 
 const { Header } = Layout;
 
@@ -57,9 +21,27 @@ const TopBar = ({ colorBgContainer, collapsed, setCollapsed }: any) => {
   const { data } = useGetProfileQuery({});
   const profile = data?.data;
 
+  const { data: bookingData } = useGetAllBookingQuery({});
+
+  const bookingLength = bookingData?.data;
+
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
+
+  const notificationItems = bookingLength?.map((book: any) => ({
+    value: book?.id,
+    disabled: true,
+    label: (
+      <div className="">
+        <div className="mb-2">
+          <p className="text-sm">{book?.service?.title}</p>
+          <p className="text-gray-600 text-xs">{book?.createdAt}</p>
+        </div>
+        <p className="text-gray-800">Booking Places</p>
+      </div>
+    ),
+  }));
 
   return (
     <Header style={{ padding: 0, background: colorBgContainer }}>
@@ -79,22 +61,13 @@ const TopBar = ({ colorBgContainer, collapsed, setCollapsed }: any) => {
         </div>
         <div className="flex justify-between items-center gap-6">
           <Select
-            defaultValue="lucy"
+            defaultValue="Notification"
             style={{ width: 220 }}
             onChange={handleChange}
             autoClearSearchValue={true}
-            options={[
-              { value: "jack", label: "Jack" },
-              { value: "lucy", label: "Lucy" },
-              { value: "Yiminghe", label: "yiminghe" },
-              { value: "disabled", label: "Disabled", disabled: true },
-            ]}
+            options={notificationItems}
+            suffixIcon={<NotificationOutlined />}
           />
-          <Dropdown menu={{ items }} placement="bottom" arrow>
-            <Button>
-              <NotificationOutlined />
-            </Button>
-          </Dropdown>
           <Dropdown
             overlay={
               <Menu className="w-56">
