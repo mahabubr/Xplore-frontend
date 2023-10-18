@@ -4,6 +4,8 @@ import Form from "../Froms/Form";
 import FormInput from "../Froms/FormInput";
 import { useGetProfileQuery } from "@/redux/api/features/user/userApi";
 import { useCreateBookingMutation } from "@/redux/api/features/booking/bookingApi";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { createBookingYupSchema } from "@/schema/serviceSchema";
 
 const XBookingModal = ({
   setIsModalOpen,
@@ -66,7 +68,10 @@ const XBookingModal = ({
         footer={null}
         width="80%"
       >
-        <Form submitHandler={onSubmit}>
+        <Form
+          submitHandler={onSubmit}
+          resolver={yupResolver(createBookingYupSchema)}
+        >
           <Row className="mt-5 " gutter={30}>
             <Col span={12}>
               <FormInput

@@ -6,6 +6,8 @@ import FormInput from "@/components/Froms/FormInput";
 import { useCreateUserMutation } from "@/redux/api/features/user/userApi";
 import { Button, Select, message } from "antd";
 import { useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { createUserYupValidate } from "@/schema/userSchema";
 
 const CreateUser = () => {
   const [createUser] = useCreateUserMutation();
@@ -29,7 +31,10 @@ const CreateUser = () => {
       <h2 className="text-xl text mb-8 text-primary text-center">
         Create User
       </h2>
-      <Form submitHandler={onSubmit}>
+      <Form
+        submitHandler={onSubmit}
+        resolver={yupResolver(createUserYupValidate)}
+      >
         <div className="space-y-3">
           <FormInput
             name="email"

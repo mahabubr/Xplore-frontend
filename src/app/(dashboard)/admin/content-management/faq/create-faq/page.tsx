@@ -5,6 +5,8 @@ import FormInput from "@/components/Froms/FormInput";
 import FormTextArea from "@/components/Froms/FormTextArea";
 import { useCreateFAQMutation } from "@/redux/api/features/faq/faqApi";
 import { Button, message } from "antd";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { createBlogYupSchema } from "@/schema/blogSchema";
 
 const CreateBlog = () => {
   const [createFaq] = useCreateFAQMutation();
@@ -23,7 +25,10 @@ const CreateBlog = () => {
 
   return (
     <div className="w-6/12 mx-auto">
-      <Form submitHandler={onSubmit}>
+      <Form
+        submitHandler={onSubmit}
+        resolver={yupResolver(createBlogYupSchema)}
+      >
         <FormInput name="title" label="Title" placeholder="Write your title" />
         <br />
         <FormTextArea

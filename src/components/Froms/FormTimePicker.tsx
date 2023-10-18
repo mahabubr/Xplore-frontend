@@ -2,6 +2,7 @@ import { TimePicker } from "antd";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import dayjs from "dayjs";
+import { getErrorMessageByPropertyName } from "@/utils/schema-validator";
 
 type FormTimePickerProps = {
   name: string;
@@ -9,7 +10,14 @@ type FormTimePickerProps = {
   index?: number;
 };
 function FormTimePicker({ name, label }: FormTimePickerProps) {
-  const { control, setValue } = useFormContext();
+  const {
+    control,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
+
+  const errorMessage = getErrorMessageByPropertyName(errors, name);
+
   return (
     <>
       {label ? label : null}
@@ -28,6 +36,11 @@ function FormTimePicker({ name, label }: FormTimePickerProps) {
           />
         )}
       />
+      <div>
+        <small style={{ color: "red", marginTop: "10px" }}>
+          {errorMessage}
+        </small>
+      </div>
     </>
   );
 }

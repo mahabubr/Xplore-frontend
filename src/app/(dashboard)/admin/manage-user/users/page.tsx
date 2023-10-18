@@ -105,7 +105,7 @@ const User = () => {
               </Button>
             </Link>
             <Popconfirm
-              title="Are you sure you want to delete this booking?"
+              title="Are you sure you want to delete this User?"
               onConfirm={() => onUserDelete(data)}
               okText="Yes"
               cancelText="No"

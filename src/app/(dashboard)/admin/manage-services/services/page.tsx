@@ -74,7 +74,11 @@ const Services = () => {
       title: "Availability",
       dataIndex: "availabilityType",
       render: function (data: any) {
-        return <Tag color="success">{data}</Tag>;
+        return data === "UPCOMING" ? (
+          <Tag color="error">{data}</Tag>
+        ) : (
+          <Tag color="success">{data}</Tag>
+        );
       },
     },
     {

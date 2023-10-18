@@ -10,6 +10,7 @@ import FormTimePicker from "@/components/Froms/FormTimePicker";
 const UploadImage = dynamic(() => import("@/components/UI/UploadImage"), {
   ssr: false,
 });
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
   availabilityTypeOptions,
@@ -20,6 +21,7 @@ import {
 } from "@/constants/services";
 import { Button, Col, Row, message } from "antd";
 import { useCreateServicesMutation } from "@/redux/api/features/services/servicesApi";
+import { createServicesYupSchema } from "@/schema/serviceSchema";
 
 const CreateServices = () => {
   const [createService] = useCreateServicesMutation();
@@ -49,7 +51,10 @@ const CreateServices = () => {
 
   return (
     <div>
-      <Form submitHandler={onSubmit}>
+      <Form
+        submitHandler={onSubmit}
+        resolver={yupResolver(createServicesYupSchema)}
+      >
         <Row gutter={20}>
           <Col span={24} className="mt-5 ">
             <UploadImage name="file" />
