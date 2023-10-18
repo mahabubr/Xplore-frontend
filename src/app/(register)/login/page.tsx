@@ -11,6 +11,8 @@ import { Button, message } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { signInYupValidate } from "@/schema/userSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const Login = () => {
   const router = useRouter();
@@ -53,7 +55,10 @@ const Login = () => {
           <h2 className="text-xl text mb-8 text-primary">
             Sign In Your Account
           </h2>
-          <Form submitHandler={onSubmit}>
+          <Form
+            submitHandler={onSubmit}
+            resolver={yupResolver(signInYupValidate)}
+          >
             <div className="space-y-3">
               <FormInput
                 name="email"

@@ -12,6 +12,8 @@ import Link from "next/link";
 import { useCreateUserMutation } from "@/redux/api/features/user/userApi";
 import ApiError from "@/components/Errors/ApiError";
 import { useRouter } from "next/navigation";
+import { createUserYupValidate } from "@/schema/userSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const SignUp = () => {
   const [createUser] = useCreateUserMutation();
@@ -31,7 +33,7 @@ const SignUp = () => {
         router.push("/login");
       }
     } catch (error: any) {
-      setError(error);
+      message.error(error.data.message);
     }
   };
 
@@ -51,7 +53,7 @@ const SignUp = () => {
           <h2 className="text-xl text mb-8 text-primary">
             Register Your Account
           </h2>
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} resolver={yupResolver(createUserYupValidate)}>
             <div className="space-y-3">
               <FormInput
                 name="email"
