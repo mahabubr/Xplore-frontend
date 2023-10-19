@@ -6,10 +6,6 @@ import { useRouter } from "next/navigation";
 const NotFound = () => {
   const router = useRouter();
 
-  setTimeout(() => {
-    router.push("/");
-  }, 3000);
-
   return (
     <div className="flex justify-center items-center h-screen">
       <Result
