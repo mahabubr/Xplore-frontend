@@ -8,14 +8,15 @@ export const createBookingYupSchema = yup.object().shape({
 });
 
 export const createServicesYupSchema = yup.object().shape({
+  image: yup.string().required("Image is required"),
   title: yup.string().required("Title is required"),
   day: yup.number().required("Days is required"),
   age: yup.number().required("Age is required"),
   how_month: yup.string().required("Month is required"),
   availability: yup.number().required("Availability is required"),
   departure: yup.string().required("Departure is required"),
-  departureTime: yup.string().required("Departure Time is required"),
-  returnTime: yup.string().required("Return Time is required"),
+  // departureTime: yup.string().required("Departure Time is required"),
+  // returnTime: yup.string().required("Return Time is required"),
   lat: yup.string().required("Lat is required"),
   long: yup.string().required("Long is required"),
   price: yup.number().required("Price is required"),
