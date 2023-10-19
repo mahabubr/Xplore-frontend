@@ -97,7 +97,7 @@ const UserPermission = () => {
                   onConfirm={() => onChangeRole("super_admin", data)}
                   okText="Yes"
                   cancelText="No"
-                  className="w-20"
+                  overlayStyle={{ width: "200px" }}
                 >
                   <Button type="primary">Make Super Admin</Button>
                 </Popconfirm>
@@ -106,7 +106,7 @@ const UserPermission = () => {
                   onConfirm={() => onChangeRole("tourist", data)}
                   okText="Yes"
                   cancelText="No"
-                  className="w-20"
+                  overlayStyle={{ width: "200px" }}
                 >
                   <Button type="primary" ghost>
                     Make Tourist
@@ -120,7 +120,7 @@ const UserPermission = () => {
                   onConfirm={() => onChangeRole("admin", data)}
                   okText="Yes"
                   cancelText="No"
-                  className="w-20"
+                  overlayStyle={{ width: "200px" }}
                 >
                   <Button type="primary" danger>
                     Make Admin
@@ -131,7 +131,7 @@ const UserPermission = () => {
                   onConfirm={() => onChangeRole("tourist", data)}
                   okText="Yes"
                   cancelText="No"
-                  className="w-20"
+                  overlayStyle={{ width: "200px" }}
                 >
                   <Button type="primary" ghost>
                     Make Tourist
@@ -145,7 +145,7 @@ const UserPermission = () => {
                   onConfirm={() => onChangeRole("super_admin", data)}
                   okText="Yes"
                   cancelText="No"
-                  className="w-20"
+                  overlayStyle={{ width: "200px" }}
                 >
                   <Button type="primary">Make Super Admin</Button>
                 </Popconfirm>
@@ -154,7 +154,7 @@ const UserPermission = () => {
                   onConfirm={() => onChangeRole("admin", data)}
                   okText="Yes"
                   cancelText="No"
-                  className="w-20"
+                  overlayStyle={{ width: "200px" }}
                 >
                   <Button type="primary" danger>
                     Make Admin

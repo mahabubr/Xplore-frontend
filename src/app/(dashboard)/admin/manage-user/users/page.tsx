@@ -109,6 +109,7 @@ const User = () => {
               onConfirm={() => onUserDelete(data)}
               okText="Yes"
               cancelText="No"
+              overlayStyle={{ width: "200px" }}
             >
               <Button type="primary" danger>
                 <DeleteOutlined />

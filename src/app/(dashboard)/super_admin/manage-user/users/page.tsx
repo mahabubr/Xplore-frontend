@@ -114,7 +114,7 @@ const User = () => {
               onConfirm={() => onUserDelete(data)}
               okText="Yes"
               cancelText="No"
-              className="w-20"
+              overlayStyle={{ width: "200px" }}
             >
               <Button type="primary" danger>
                 <DeleteOutlined />
