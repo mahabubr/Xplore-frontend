@@ -13,25 +13,160 @@ const reviews = [
     id: 1,
     name: "John Doe",
     email: "john.doe@example.com",
-    rating: 5, // Add a rating property
+    rating: 4,
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "I had a great experience with this product. It's exactly what I was looking for.",
   },
   {
     id: 2,
     name: "Jane Smith",
     email: "jane.smith@example.com",
-    rating: 4, // Add a rating property
+    rating: 5,
     review:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "The quality of this product exceeded my expectations. I highly recommend it.",
   },
   {
     id: 3,
     name: "Alice Johnson",
     email: "alice.johnson@example.com",
-    rating: 3, // Add a rating property
+    rating: 3,
     review:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "I found the product to be satisfactory, but there is room for improvement.",
+  },
+  {
+    id: 4,
+    name: "Bob Johnson",
+    email: "bob.johnson@example.com",
+    rating: 2,
+    review:
+      "I was disappointed with the product. It didn't meet my needs as expected.",
+  },
+  {
+    id: 5,
+    name: "Ella Davis",
+    email: "ella.davis@example.com",
+    rating: 4,
+    review:
+      "This product is a good value for the price. It's functional and reliable.",
+  },
+  {
+    id: 6,
+    name: "David Brown",
+    email: "david.brown@example.com",
+    rating: 3,
+    review:
+      "I have mixed feelings about the product. It has its pros and cons.",
+  },
+  {
+    id: 7,
+    name: "Emily Wilson",
+    email: "emily.wilson@example.com",
+    rating: 4,
+    review:
+      "The customer service was excellent, and the product arrived on time.",
+  },
+  {
+    id: 8,
+    name: "Sam Adams",
+    email: "sam.adams@example.com",
+    rating: 5,
+    review:
+      "I'm extremely satisfied with this product. It's a game-changer for me.",
+  },
+  {
+    id: 9,
+    name: "Olivia Moore",
+    email: "olivia.moore@example.com",
+    rating: 4,
+    review:
+      "This product has improved my daily routine. It's worth the investment.",
+  },
+  {
+    id: 10,
+    name: "Michael Taylor",
+    email: "michael.taylor@example.com",
+    rating: 3,
+    review:
+      "I expected more from this product. It's decent, but not exceptional.",
+  },
+  {
+    id: 11,
+    name: "Sophia Anderson",
+    email: "sophia.anderson@example.com",
+    rating: 2,
+    review:
+      "I encountered issues with the product and had a disappointing experience.",
+  },
+  {
+    id: 12,
+    name: "Matthew Wilson",
+    email: "matthew.wilson@example.com",
+    rating: 4,
+    review:
+      "The product met my requirements, and I'm satisfied with its performance.",
+  },
+  {
+    id: 13,
+    name: "Ava Davis",
+    email: "ava.davis@example.com",
+    rating: 5,
+    review:
+      "I love this product. It's a must-have for anyone in a similar situation.",
+  },
+  {
+    id: 14,
+    name: "Liam Brown",
+    email: "liam.brown@example.com",
+    rating: 4,
+    review:
+      "I would recommend this product to others. It's reliable and user-friendly.",
+  },
+  {
+    id: 15,
+    name: "Mia Johnson",
+    email: "mia.johnson@example.com",
+    rating: 3,
+    review:
+      "The product serves its purpose, but it could benefit from some improvements.",
+  },
+  {
+    id: 16,
+    name: "Noah Clark",
+    email: "noah.clark@example.com",
+    rating: 4,
+    review:
+      "I've had a positive experience with this product. It's been quite useful for me.",
+  },
+  {
+    id: 17,
+    name: "Isabella Wilson",
+    email: "isabella.wilson@example.com",
+    rating: 5,
+    review:
+      "This product is outstanding. I'm thrilled with its performance and quality.",
+  },
+  {
+    id: 18,
+    name: "James Adams",
+    email: "james.adams@example.com",
+    rating: 4,
+    review:
+      "I'm satisfied with the product, and it's a valuable addition to my daily routine.",
+  },
+  {
+    id: 19,
+    name: "Charlotte Moore",
+    email: "charlotte.moore@example.com",
+    rating: 3,
+    review:
+      "The product works as expected, but there are minor issues that could be addressed.",
+  },
+  {
+    id: 20,
+    name: "Benjamin Taylor",
+    email: "benjamin.taylor@example.com",
+    rating: 2,
+    review: "I regret purchasing this product. It didn't meet my expectations.",
   },
 ];
 
@@ -75,7 +210,7 @@ const ClientReviewWithImages = () => {
                     <img
                       src={
                         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470"
-                      } // Add the user's profile image URL
+                      }
                       alt={`Image of ${review.name}`}
                       className="rounded-full h-12 w-12 object-cover"
                     />
