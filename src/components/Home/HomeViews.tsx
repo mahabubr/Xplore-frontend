@@ -2,7 +2,7 @@ import "./Home.css";
 
 const HomeViews = () => {
   return (
-    <div className="mt-32 mb-60">
+    <div className="mt-32 mb-20">
       <section className="w-4/5 mx-auto flex justify-between items-center">
         <div className="w-1/5 mr-auto">
           <h2 className="text-3xl font-light">Open Views</h2>

@@ -4,6 +4,7 @@ import ClientReview from "@/components/Home/ClientReview";
 import EventsByCategory from "@/components/Home/EventsByCategory";
 import HomeViews from "@/components/Home/HomeViews";
 import LatestNews from "@/components/Home/LatestNews";
+import Organized from "@/components/Home/Organized";
 import Stories from "@/components/Home/Stories";
 import Survey from "@/components/Home/Survey";
 import UpcomingServices from "@/components/Home/UpcommingService";
@@ -20,9 +21,10 @@ const Home = () => {
       <UpcomingServices />
       <Survey />
       <ClientReview />
-      <Stories />
+      {/* <Stories /> */}
       <LatestNews />
       <HomeViews />
+      <Organized />
       <Footer />
     </div>
   );
