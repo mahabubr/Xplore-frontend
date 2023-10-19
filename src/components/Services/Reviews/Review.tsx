@@ -12,6 +12,7 @@ const { TextArea } = Input;
 const Review = ({ id }: { id: string }) => {
   const [description, setDescription] = useState("");
   const [ratting, setRatting] = useState(3);
+  const [error, setError] = useState("");
 
   const { data } = useGetProfileQuery({});
 
@@ -20,6 +21,11 @@ const Review = ({ id }: { id: string }) => {
   const userInfo = data?.data;
 
   const handleSubmitReview = async () => {
+    if (description === "") {
+      setError("Description is Required");
+      return;
+    }
+
     message.loading("Posting...");
     try {
       const formData = {
@@ -32,6 +38,7 @@ const Review = ({ id }: { id: string }) => {
       if (res.success) {
         message.success(res.message);
         setDescription("");
+        setError("");
         setRatting(0);
       }
     } catch (error: any) {
@@ -47,6 +54,7 @@ const Review = ({ id }: { id: string }) => {
         placeholder="Write..."
         autoSize={{ minRows: 8, maxRows: 5 }}
       />
+      <small className="text-red-500 my-5">{error}</small>
       <div className="flex justify-between items-center mt-5">
         <Rate
           className=""

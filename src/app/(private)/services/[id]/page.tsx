@@ -23,6 +23,7 @@ import { useDispatch } from "react-redux";
 import { storeProduct } from "@/redux/api/features/services/servicesSlice";
 import Review from "@/components/Services/Reviews/Review";
 import ShowReviews from "@/components/Services/Reviews/ShowReviews";
+import ServiceSmallCard from "@/components/Services/Card/ServiceSmallCard";
 
 const SingleService = ({ params }: any) => {
   const { id } = params;
@@ -195,10 +196,10 @@ const SingleService = ({ params }: any) => {
                 </p>
               </Card>
             </div>
-            <div className="mt-10 grid gap-5">
+            <div className="my-10 grid gap-5">
               {serviceAllData?.data?.data.length > 0 &&
                 serviceAllData.data.data.map((service: iServices) => (
-                  <ServiceCard
+                  <ServiceSmallCard
                     key={service.id}
                     service={service}
                     isLoading={isLoading}

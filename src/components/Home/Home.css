@@ -112,6 +112,28 @@
   }
 }
 
+.custom-button {
+  position: absolute;
+  bottom: 20px; /* Adjust the vertical position as needed */
+  right: 20px; /* Adjust the horizontal position as needed */
+  background-color: #0074b7; /* Change button background color */
+  color: white; /* Change button text color */
+  font-size: 24px; /* Adjust the font size */
+  width: 40px; /* Adjust the button width */
+  height: 40px; /* Adjust the button height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Makes the button round */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.custom-button:hover {
+  background-color: #00578a; /* Change button background color on hover */
+}
+
+
 /* Views */
 
 .slideshow .card {
