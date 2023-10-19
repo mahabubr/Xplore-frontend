@@ -99,6 +99,7 @@ const BookingHistory = () => {
               onConfirm={() => onDelete(data)}
               okText="Yes"
               cancelText="No"
+              className="w-20"
             >
               <Button type="primary" danger>
                 <DeleteOutlined />

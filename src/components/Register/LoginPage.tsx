@@ -29,11 +29,7 @@ const LoginPage = () => {
       });
       if (result?.ok) {
         message.success("Login Successful");
-        if (typeof window !== "undefined" && typeof document !== "undefined") {
-          return "";
-        } else {
-          window.location.reload();
-        }
+        router.push("/");
         setError("");
       } else {
         setError("Account Not Found");
