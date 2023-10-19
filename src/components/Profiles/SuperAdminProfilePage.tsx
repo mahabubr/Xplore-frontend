@@ -41,11 +41,11 @@ const SuperAdminProfile = () => {
       const res = await updateUser(formData).unwrap();
       if (res?.success) {
         message.success(res.message);
-      if (typeof window !== "undefined" && typeof document !== "undefined") {
-        return "";
-      } else {
-        window.location.reload();
-      }
+        if (typeof window !== "undefined" && typeof document !== "undefined") {
+          return "";
+        } else {
+          window.location.reload();
+        }
       }
     } catch (error: any) {
       message.error(error.data.message);
