@@ -3,12 +3,15 @@
 Credentials Super Admin:
 email : superadmin@xplore.com
 pass: 123456
+<br />
 Credentials Admin:
 email : admin@xplore.com
 pass: 123456
+<br />
 Credentials Tourist:
 email : tourist@xplore.com
 pass: 123456
+<br />
 
 ## Table of Contents
 
