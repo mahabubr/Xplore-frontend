@@ -1,5 +1,15 @@
 # Travel Agency Website - README
 
+Credentials Super Admin:
+email : superadmin@xplore.com
+pass: 123456
+Credentials Admin:
+email : admin@xplore.com
+pass: 123456
+Credentials Tourist:
+email : tourist@xplore.com
+pass: 123456
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
