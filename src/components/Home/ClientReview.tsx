@@ -11,6 +11,8 @@ import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 const reviews = [
   {
     id: 1,
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "John Doe",
     email: "john.doe@example.com",
     rating: 4,
@@ -19,6 +21,8 @@ const reviews = [
   },
   {
     id: 2,
+    image:
+      "https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?auto=format&fit=crop&q=80&w=1588&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Jane Smith",
     email: "jane.smith@example.com",
     rating: 5,
@@ -27,6 +31,8 @@ const reviews = [
   },
   {
     id: 3,
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Alice Johnson",
     email: "alice.johnson@example.com",
     rating: 3,
@@ -35,6 +41,8 @@ const reviews = [
   },
   {
     id: 4,
+    image:
+      "https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?auto=format&fit=crop&q=80&w=1588&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Bob Johnson",
     email: "bob.johnson@example.com",
     rating: 2,
@@ -43,6 +51,8 @@ const reviews = [
   },
   {
     id: 5,
+    image:
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Ella Davis",
     email: "ella.davis@example.com",
     rating: 4,
@@ -51,6 +61,8 @@ const reviews = [
   },
   {
     id: 6,
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1522&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "David Brown",
     email: "david.brown@example.com",
     rating: 3,
@@ -59,6 +71,8 @@ const reviews = [
   },
   {
     id: 7,
+    image:
+      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Emily Wilson",
     email: "emily.wilson@example.com",
     rating: 4,
@@ -67,6 +81,8 @@ const reviews = [
   },
   {
     id: 8,
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Sam Adams",
     email: "sam.adams@example.com",
     rating: 5,
@@ -75,6 +91,8 @@ const reviews = [
   },
   {
     id: 9,
+    image:
+      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Olivia Moore",
     email: "olivia.moore@example.com",
     rating: 4,
@@ -83,6 +101,8 @@ const reviews = [
   },
   {
     id: 10,
+    image:
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Michael Taylor",
     email: "michael.taylor@example.com",
     rating: 3,
@@ -91,6 +111,8 @@ const reviews = [
   },
   {
     id: 11,
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1522&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Sophia Anderson",
     email: "sophia.anderson@example.com",
     rating: 2,
@@ -99,6 +121,8 @@ const reviews = [
   },
   {
     id: 12,
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Matthew Wilson",
     email: "matthew.wilson@example.com",
     rating: 4,
@@ -107,6 +131,8 @@ const reviews = [
   },
   {
     id: 13,
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Ava Davis",
     email: "ava.davis@example.com",
     rating: 5,
@@ -115,6 +141,8 @@ const reviews = [
   },
   {
     id: 14,
+    image:
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Liam Brown",
     email: "liam.brown@example.com",
     rating: 4,
@@ -123,6 +151,8 @@ const reviews = [
   },
   {
     id: 15,
+    image:
+      "https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?auto=format&fit=crop&q=80&w=1588&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Mia Johnson",
     email: "mia.johnson@example.com",
     rating: 3,
@@ -131,6 +161,8 @@ const reviews = [
   },
   {
     id: 16,
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Noah Clark",
     email: "noah.clark@example.com",
     rating: 4,
@@ -139,6 +171,8 @@ const reviews = [
   },
   {
     id: 17,
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1522&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Isabella Wilson",
     email: "isabella.wilson@example.com",
     rating: 5,
@@ -147,6 +181,8 @@ const reviews = [
   },
   {
     id: 18,
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=1480&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "James Adams",
     email: "james.adams@example.com",
     rating: 4,
@@ -155,6 +191,8 @@ const reviews = [
   },
   {
     id: 19,
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Charlotte Moore",
     email: "charlotte.moore@example.com",
     rating: 3,
@@ -163,6 +201,8 @@ const reviews = [
   },
   {
     id: 20,
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1522&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Benjamin Taylor",
     email: "benjamin.taylor@example.com",
     rating: 2,
@@ -177,14 +217,31 @@ const ClientReviewWithImages = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div>
       <Title title="Client Review" top="See The" />
       <section className="p-8 flex items-center">
-        <div className="container mx-auto flex justify-between">
-          <div className="w-1/3">
+        <div className="container mx-auto lg:flex justify-between">
+          <div className="lg:w-1/3">
             <div className="grid gap-4 relative">
               <img
                 src={
@@ -195,22 +252,20 @@ const ClientReviewWithImages = () => {
               />
               <img
                 src={
-                  "https://images.unsplash.com/photo-1633613286991-611fe299c4be?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470"
+                  "https://static.vecteezy.com/system/resources/thumbnails/010/872/305/small/3d-customer-survey-icon-png.png"
                 }
                 alt={`Image`}
-                className="rounded-lg h-48 w-48 object-cover absolute -bottom-20 left-20"
+                className="rounded-lg h-56 w-56 object-cover absolute -bottom-20 left-20"
               />
             </div>
           </div>
-          <div className="w-2/3 ml-8">
+          <div className="lg:w-2/3 lg:ml-8 mt-24 lg:mt-0">
             <Slider {...settings}>
               {reviews.map((review) => (
-                <div key={review.id} className="p-4">
+                <div key={review.id} className="p-4 bg-white shadow-lg">
                   <div className="flex items-center">
                     <img
-                      src={
-                        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470"
-                      }
+                      src={review.image}
                       alt={`Image of ${review.name}`}
                       className="rounded-full h-12 w-12 object-cover"
                     />

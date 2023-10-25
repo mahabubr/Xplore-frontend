@@ -1,4 +1,7 @@
+"use client";
+
 import "./Home.css";
+import { motion } from "framer-motion";
 
 const HomeViews = () => {
   return (
@@ -29,44 +32,68 @@ const HomeViews = () => {
           </div>
         </div>{" "}
       </section>
-      <section className="flex justify-between slideshow px-6 mt-4">
-        <div className="card relative">
+      <section className="flex justify-between flex-wrap slideshow px-6 mt-4">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }} // Initial state
+          animate={{ opacity: 1, x: 0 }} // Animation state
+          exit={{ opacity: 0, x: 100 }} // Exit state
+          transition={{ duration: 5 }} // Animation duration
+          className="card relative"
+        >
           <img
             src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&q=80&w=1560&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
           <div className="absolute overlay-text w-full flex flex-col items-center">
-            <p className="text-white text-xl tracking-tight">Waterfall</p>
+            <p className="text-white text-xl tracking-tight">Leke</p>
             <p className="text-xs text-gray-500 font-semibold uppercase mt-1">
               43 Adventures
             </p>
           </div>
-        </div>
-        <div className="card relative">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }} // Initial state
+          animate={{ opacity: 1, x: 0 }} // Animation state
+          exit={{ opacity: 0, x: 100 }} // Exit state
+          transition={{ duration: 4 }} // Animation duration
+          className="card relative"
+        >
           <img
             src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&q=80&w=1528&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
           <div className="absolute overlay-text w-full flex flex-col items-center">
-            <p className="text-white text-xl tracking-tight">Waterfall</p>
+            <p className="text-white text-xl tracking-tight">Journey</p>
             <p className="text-xs text-gray-500 font-semibold uppercase mt-1">
               43 Adventures
             </p>
           </div>
-        </div>
-        <div className="card relative">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }} // Initial state
+          animate={{ opacity: 1, x: 0 }} // Animation state
+          exit={{ opacity: 0, x: 100 }} // Exit state
+          transition={{ duration: 3 }} // Animation duration
+          className="card relative"
+        >
           <img
             src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
           <div className="absolute overlay-text w-full flex flex-col items-center">
-            <p className="text-white text-xl tracking-tight">Waterfall</p>
+            <p className="text-white text-xl tracking-tight">Roads</p>
             <p className="text-xs text-gray-500 font-semibold uppercase mt-1">
               43 Adventures
             </p>
           </div>
-        </div>
-        <div className="card relative ">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }} // Initial state
+          animate={{ opacity: 1, x: 0 }} // Animation state
+          exit={{ opacity: 0, x: 100 }} // Exit state
+          transition={{ duration: 2 }} // Animation duration
+          className="card relative"
+        >
           <img
             src="https://plus.unsplash.com/premium_photo-1664361480872-6416aab14696?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
@@ -77,7 +104,7 @@ const HomeViews = () => {
               43 Adventures
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
       <section className="mt-60">
         <div className="flex mx-auto justify-center">

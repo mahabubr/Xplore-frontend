@@ -17,7 +17,9 @@ export async function middleware(request: NextRequest) {
     if (hybridRoutes.includes(pathname)) {
       return NextResponse.next();
     }
-    return NextResponse.redirect("https://xplore-frontend-six.vercel.app/login");
+    return NextResponse.redirect(
+      "https://xplore-frontend-six.vercel.app/login"
+    );
   }
 
   const role = token?.role as string;

@@ -1,9 +1,5 @@
 import { iServices } from "@/interface/api";
-import {
-  CalendarFilled,
-  UserAddOutlined,
-  SafetyCertificateFilled,
-} from "@ant-design/icons";
+import { SafetyCertificateFilled } from "@ant-design/icons";
 import { Card, Tag } from "antd";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,21 +13,24 @@ const BannerCard = ({
   service: iServices;
   isLoading: boolean;
 }) => {
-  const {
-    title,
-    price,
-    location,
-    image,
-    id,
-    availabilityType,
-  } = service;
+  const { title, price, location, image, id, availabilityType } = service;
 
   return (
     <Link href={`/services/${id}`}>
       <Card
+        bordered={false}
+        hoverable={false}
         loading={isLoading}
-        cover={<Image src={image} alt={title} height={150} width={200} />}
-        style={{ backgroundColor: "#f9f9f9" }}
+        className=""
+        cover={
+          <Image
+            src={image}
+            alt={title}
+            height={150}
+            width={200}
+            className="object-cover rounded-3xl p-3"
+          />
+        }
       >
         {availabilityType === "AVAILABLE" ? (
           <Tag

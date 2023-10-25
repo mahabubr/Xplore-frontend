@@ -1,16 +1,21 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
 
-import { Navigation, Autoplay } from "swiper/modules";
 import "./Home.css";
 
 const Banner = () => {
   return (
     <div>
       <Swiper
-        navigation={true}
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay, Pagination]}
+        navigation={{
+          prevEl: "#custom-prev",
+          nextEl: "#custom-next",
+          enabled: true,
+        }}
+        pagination={true}
         loop={true}
         autoplay={{ delay: 5000 }}
         className="mySwiper"
@@ -86,7 +91,7 @@ const Banner = () => {
                 Lets Go Now
               </p>
               <h1 className="text-white font-serif text-7xl font-semibold font-b ">
-                Dreams Come True
+                Dreams True
               </h1>
               <p className="text-white mt-3 font-c">
                 When preparing for your trip, ensure you have all the essential

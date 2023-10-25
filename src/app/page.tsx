@@ -13,11 +13,11 @@ import Navbar from "@/components/Shared/Navbar";
 
 const Home = () => {
   return (
-    <div>
+    <main className="overflow-x-hidden">
       <Navbar />
       <Banner />
-      <AvailableServices />
       <EventsByCategory />
+      <AvailableServices />
       <UpcomingServices />
       <Survey />
       <ClientReview />
@@ -26,7 +26,7 @@ const Home = () => {
       <HomeViews />
       <Organized />
       <Footer />
-    </div>
+    </main>
   );
 };
 

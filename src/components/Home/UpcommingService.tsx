@@ -14,15 +14,33 @@ const UpcomingServices = () => {
   });
 
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="container mx-auto">
       <Title top="Plan Your" title="Upcoming Tour" />
       <Swiper
         modules={[Autoplay]}
         loop={true}
-        autoplay={{ delay: 2000 }}
+        autoplay={{ delay: 1000, reverseDirection: true }}
+        speed={2000}
         className="mySwiper"
         slidesPerView={4}
         spaceBetween={16}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          500: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1000: {
+            slidesPerView: 4,
+          },
+          1200: {
+            slidesPerView: 5,
+          },
+        }}
       >
         <div>
           {data?.data?.data?.length > 0 &&

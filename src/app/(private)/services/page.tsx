@@ -70,7 +70,7 @@ const Services = () => {
   return (
     <div className="w-11/12 mx-auto mt-10">
       <Row gutter={50}>
-        <Col span={18}>
+        <Col lg={18}>
           <Tabs
             type="card"
             animated
@@ -93,7 +93,7 @@ const Services = () => {
             )}
           />
         </Col>
-        <Col span={6}>
+        <Col lg={6}>
           <ServiceFilter />
         </Col>
       </Row>

@@ -1,6 +1,9 @@
+"use client";
+
 import Title from "../UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 const newsData = [
   {
@@ -61,14 +64,16 @@ const newsData = [
 
 const LatestNews = () => {
   return (
-    <section className="mt-20">
+    <section className="container mx-auto mt-20">
       <Title title="Latest News" top="Read Now" />
-      <div className="w-10/12 mx-auto">
-        <ul className="grid grid-cols-3 gap-4">
+      <div className="">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {newsData.map((article, index) => (
-            <li
+            <motion.div
+              whileHover={{ scale: [null, 1.3, 1.2] }}
+              transition={{ duration: 0.3 }}
               key={index}
-              className={`mb-8 p-6 rounded-xl shadow-xl ${
+              className={`mb-8 p-6 rounded-xl shadow-xl cursor-pointer ${
                 index % 2 === 0 ? "bg-white" : "bg-elegant"
               }`}
             >
@@ -76,7 +81,7 @@ const LatestNews = () => {
                 fontSize={50}
                 className="mb-5"
                 color="#40E0D0"
-                icon={faNewspaper}
+                icon={faPaperPlane}
               />
 
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -84,7 +89,7 @@ const LatestNews = () => {
               </h3>
               <p className="text-sm text-sunset mb-2">{article.date}</p>
               <p className="text-neutral text-sm">{article.content}</p>
-            </li>
+            </motion.div>
           ))}
         </ul>
       </div>

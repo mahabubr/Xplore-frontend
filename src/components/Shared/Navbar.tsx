@@ -46,7 +46,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-primary  p-4 sticky top-0 z-50 backdrop-blur-xl backdrop:bg-primary bg-white/30">
+    <nav className="bg-primary  p-4 sticky top-0 z-50 backdrop-blur-xl backdrop:bg-primary bg-white/30 ">
       <div className="container mx-auto flex justify-between items-center ">
         <div className="flex items-center">
           <Link href={"/"}>
@@ -139,7 +139,7 @@ const Navbar = () => {
                 </a>
               </Dropdown>
             ) : (
-              <Link href={"/login"}>
+              <Link href={"/login"} className="p-4">
                 <Button type="primary">Login</Button>
               </Link>
             )}
