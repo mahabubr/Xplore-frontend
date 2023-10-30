@@ -14,17 +14,10 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        // Define your custom color palette here
-        primary: "#003366", // Deep Blue
-        accent: "#FFD700", // Golden Sand
-        nature: "#228B22", // Forest Green
-        sunset: "#FF6600", // Sunset Orange
-        passion: "#DC143C", // Crimson Red
-        neutral: "#808080", // Slate Gray
-        water: "#40E0D0", // Turquoise Blue
-        sky: "#87CEEB", // Sky Blue
-        warm: "#F5DEB3", // Sandy Beige
-        elegant: "#f9f9f9", // Lavender
+        primary: "#2a9d8f",
+        secondary: "#457b9d",
+        accent: "#0077b6",
+        elegant: "#f9f9f9",
       },
     },
   },
@@ -33,9 +26,6 @@ const config: Config = {
     preflight: false,
   },
   important: true,
-  // Define responsive breakpoints
-  // Example: sm, md, lg, xl, and custom
-  // You can customize the values based on your needs
   variants: {
     extend: {
       screens: {

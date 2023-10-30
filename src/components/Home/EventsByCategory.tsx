@@ -60,7 +60,7 @@ const EventsByCategory = () => {
   ];
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-28">
       <Title title="Events By Category" top="Make Your" />
 
       <div className="">

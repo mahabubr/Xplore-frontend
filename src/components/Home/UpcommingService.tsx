@@ -6,7 +6,7 @@ import { Autoplay } from "swiper/modules";
 import Title from "../UI/Title";
 import { useGetServicesQuery } from "@/redux/api/features/services/servicesApi";
 import { iServices } from "@/interface/api";
-import BannerCard from "../Services/Card/BannerCard";
+import BannerCardOne from "../Services/Card/BannerCardOne";
 
 const UpcomingServices = () => {
   const { data, isLoading } = useGetServicesQuery({
@@ -14,31 +14,35 @@ const UpcomingServices = () => {
   });
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto z-50">
       <Title top="Plan Your" title="Upcoming Tour" />
       <Swiper
         modules={[Autoplay]}
         loop={true}
-        autoplay={{ delay: 1000, reverseDirection: true }}
+        autoplay={{
+          delay: 1000,
+          reverseDirection: true,
+          pauseOnMouseEnter: true,
+        }}
         speed={2000}
         className="mySwiper"
-        slidesPerView={4}
-        spaceBetween={16}
+        slidesPerView={3}
+        spaceBetween={40}
         breakpoints={{
           0: {
             slidesPerView: 1,
           },
           500: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
           },
           1000: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           1200: {
-            slidesPerView: 5,
+            slidesPerView: 3,
           },
         }}
       >
@@ -46,7 +50,7 @@ const UpcomingServices = () => {
           {data?.data?.data?.length > 0 &&
             data.data.data.map((service: iServices) => (
               <SwiperSlide key={service.id}>
-                <BannerCard service={service} isLoading={isLoading} />
+                <BannerCardOne service={service} />
               </SwiperSlide>
             ))}
         </div>
