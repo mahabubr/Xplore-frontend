@@ -25,7 +25,7 @@ const BannerCardOne = ({ service }: { service: iServices }) => {
           <h2 className="text-xl font-black">{title.slice(0, 20)}...</h2>
           <p className="text-sm font-bold">{location}</p>
           <div className="mt-6 flex justify-between items-center  font-medium">
-            <Rate disabled defaultValue={4} className="text-secondary" />
+            <Rate disabled defaultValue={4} className="text-accent" />
             <span>
               <FieldTimeOutlined /> {day} days
             </span>

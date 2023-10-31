@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React from "react";
@@ -6,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Title from "../UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
+import { faStarHalfStroke, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const reviews = [
   {
@@ -262,47 +263,37 @@ const ClientReviewWithImages = () => {
           <div className="lg:w-2/3 lg:ml-8 mt-24 lg:mt-0">
             <Slider {...settings}>
               {reviews.map((review) => (
-                <div key={review.id} className="p-4 bg-white shadow-lg">
+                <div key={review.id} className=" bg-white p-8">
                   <div className="flex items-center">
                     <img
                       src={review.image}
                       alt={`Image of ${review.name}`}
-                      className="rounded-full h-12 w-12 object-cover"
+                      className="rounded-sm h-12 w-12 object-cover"
                     />
                     <div className="ml-4">
-                      <p className="text-2xl text-primary font-semibold">
+                      <p className="text-xl font-semibold">
                         {review.name}
                       </p>
-                      <p className="text-md text-cyan-700">{review.email}</p>
+                      <p className="text-md text-secondary text-sm">{review.email}</p>
                     </div>
                   </div>
                   <div className="mt-4">
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        color="#FFD700"
-                        icon={faStarHalfStroke}
-                      />
-                      <FontAwesomeIcon
-                        color="#FFD700"
-                        icon={faStarHalfStroke}
-                      />
-                      <FontAwesomeIcon
-                        color="#FFD700"
-                        icon={faStarHalfStroke}
-                      />
-                      <FontAwesomeIcon
-                        color="#FFD700"
-                        icon={faStarHalfStroke}
-                      />
-                      <FontAwesomeIcon
-                        color="#FFD700"
-                        icon={faStarHalfStroke}
-                      />
-                      <p className="ml-2 text-gray-600">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <FontAwesomeIcon color="#0077b6" icon={faStar} />
+                        <FontAwesomeIcon color="#0077b6" icon={faStar} />
+                        <FontAwesomeIcon color="#0077b6" icon={faStar} />
+                        <FontAwesomeIcon color="#0077b6" icon={faStar} />
+                        <FontAwesomeIcon
+                          color="#0077b6"
+                          icon={faStarHalfStroke}
+                        />
+                      </div>
+                      <p className="text-gray-600 font-bold text-sm">
                         Rating: {review.rating}
                       </p>
                     </div>
-                    <p className="text-base text-neutral mt-4">
+                    <p className="text-base text-gray-400 mt-4">
                       {review.review}
                     </p>
                   </div>

@@ -7,7 +7,7 @@ import "./Home.css";
 
 const Banner = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <Swiper
         modules={[Navigation, Autoplay, Pagination]}
         navigation={{

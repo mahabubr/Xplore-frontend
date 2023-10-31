@@ -46,8 +46,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-primary  p-4 sticky top-0 z-50 backdrop-blur-xl backdrop:bg-primary bg-white/30 ">
-      <div className="container mx-auto flex justify-between items-center ">
+    <nav
+      className={`bg-primary p-4 sticky top-0 z-50 backdrop-blur-xl backdrop:bg-primary bg-white/30 `}
+    >
+      <div className="container mx-auto flex justify-between items-center relative">
         <div className="flex items-center">
           <Link href={"/"}>
             <Image src={logo} width={100} height={30} alt="" />
@@ -58,7 +60,7 @@ const Navbar = () => {
             <Link
               key={route.path}
               href={route.path}
-              className="text-sunset hover:text-passion transition duration-500"
+              className="text-secondary hover:text-accent font-bold transition duration-500"
             >
               {route.name}
             </Link>
@@ -108,10 +110,15 @@ const Navbar = () => {
         unmountOnExit
       >
         <div className="md:hidden mt-5 ">
-          <Menu mode="vertical">
+          <Menu mode="vertical" >
             {routes.map((route) => (
-              <Menu.Item key={route.path}>
-                <Link href={route.path}>{route.name}</Link>
+              <Menu.Item key={route.path} >
+                <Link
+                  href={route.path}
+                  className="text-secondary hover:text-accent font-bold transition duration-500"
+                >
+                  {route.name}
+                </Link>
               </Menu.Item>
             ))}
             {session?.user && session?.user ? (

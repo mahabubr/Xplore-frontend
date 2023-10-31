@@ -2,8 +2,7 @@
 
 import Title from "../UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+import { faRightFromBracket, faRss } from "@fortawesome/free-solid-svg-icons";
 
 const newsData = [
   {
@@ -69,27 +68,32 @@ const LatestNews = () => {
       <div className="">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {newsData.map((article, index) => (
-            <motion.div
-              whileHover={{ scale: [null, 1.3, 1.2] }}
-              transition={{ duration: 0.3 }}
+            <div
               key={index}
-              className={`mb-8 p-6 rounded-xl shadow-xl cursor-pointer ${
-                index % 2 === 0 ? "bg-white" : "bg-elegant"
+              className={`mb-8 p-6 rounded-xl  cursor-pointer ${
+                index % 2 === 0 ? "bg-white shadow-xl" : "bg-elegant"
               }`}
             >
-              <FontAwesomeIcon
-                fontSize={50}
-                className="mb-5"
-                color="#40E0D0"
-                icon={faPaperPlane}
-              />
-
+              <div className="flex justify-between">
+                <FontAwesomeIcon
+                  fontSize={50}
+                  className="mb-5"
+                  color="gray"
+                  icon={faRss}
+                />
+                <FontAwesomeIcon
+                  fontSize={50}
+                  className="mb-5"
+                  color="gray"
+                  icon={faRightFromBracket}
+                />
+              </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 {article.title}
               </h3>
               <p className="text-sm text-sunset mb-2">{article.date}</p>
               <p className="text-neutral text-sm">{article.content}</p>
-            </motion.div>
+            </div>
           ))}
         </ul>
       </div>

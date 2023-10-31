@@ -25,9 +25,9 @@ const FAQ = () => {
   };
 
   return (
-    <div className="my-20 w-8/12 mx-auto">
-      <Title title="frequently asked questions" top="Know About" />
-      <div>
+    <div className="container mx-auto my-10 px-4">
+      <Title title="Frequently Asked Questions" top="Know About" />
+      <div className="w-full max-w-3xl mx-auto">
         <Collapse items={faqItems} onChange={onChange} />
       </div>
     </div>

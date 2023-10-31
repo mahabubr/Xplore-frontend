@@ -15,7 +15,7 @@ const Blog = () => {
   const blogData = data?.data;
 
   return (
-    <div className="w-11/12 mx-auto my-10">
+    <div className="container mx-auto">
       <Title title="Blog and News" top="Read Now" />
       <div className="space-y-4">
         {blogData.length > 0 &&
