@@ -17,7 +17,6 @@ import {
   ClockCircleFilled,
 } from "@ant-design/icons";
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
-import ServiceCard from "@/components/Services/Card/ServiceCard";
 import { iServices } from "@/interface/api";
 import { useDispatch } from "react-redux";
 import { storeProduct } from "@/redux/api/features/services/servicesSlice";

@@ -1,20 +1,29 @@
+"use client";
+
+import Title from "@/components/UI/Title";
+import { Button } from "antd";
 import React from "react";
+import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
+import {
+  FacebookFilled,
+  TwitterOutlined,
+  LinkedinFilled,
+  InstagramFilled,
+  YoutubeFilled,
+} from "@ant-design/icons";
 
 const ContactUs = () => {
   return (
-    <div className="bg-gray-100 min-h-screen p-8">
+    <div className="container mx-auto my-28">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-semibold text-center mt-10 mb-6">
-          Contact Us
-        </h1>
+        <Title title="About Us" top="Know About" />
 
-        {/* Contact Information */}
         <section className="bg-white p-8 shadow-md rounded-lg mb-6">
-          <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
-          <p>
+          <h2 className="text-2xl font-semibold">Contact Information</h2>
+          <p className="text-gray-500">
             Feel free to reach out to us if you have any questions or inquiries.
           </p>
-          <address className="mt-4">
+          <address className="mt-4 text-accent">
             Travel Agency Name
             <br />
             Address: 123 Main St, City, Country
@@ -26,7 +35,6 @@ const ContactUs = () => {
           </address>
         </section>
 
-        {/* Contact Form */}
         <section className="bg-white p-8 shadow-md rounded-lg mb-6">
           <h2 className="text-2xl font-semibold mb-4">Contact Form</h2>
           <form>
@@ -41,7 +49,7 @@ const ContactUs = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="mt-1 p-2 border rounded w-full"
+                className="mt-1 p-2 border rounded w-full outline-0"
               />
             </div>
             <div className="mb-4">
@@ -55,7 +63,7 @@ const ContactUs = () => {
                 type="email"
                 id="email"
                 name="email"
-                className="mt-1 p-2 border rounded w-full"
+                className="mt-1 p-2 border rounded w-full outline-0"
               />
             </div>
             <div className="mb-4">
@@ -69,46 +77,29 @@ const ContactUs = () => {
                 id="message"
                 name="message"
                 rows={4}
-                className="mt-1 p-2 border rounded w-full"
+                className="mt-1 p-2 border rounded w-full outline-0"
               />
             </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            >
-              Submit
-            </button>
+            <Button type="primary">Submit</Button>
           </form>
         </section>
 
         {/* Location Map */}
         <section className="bg-white p-8 shadow-md rounded-lg mb-6">
           <h2 className="text-2xl font-semibold mb-4">Location Map</h2>
-          {/* Embed a map or add location information here */}
-        </section>
-
-        {/* Frequently Asked Questions */}
-        <section className="bg-white p-8 shadow-md rounded-lg mb-6">
-          <h2 className="text-2xl font-semibold mb-4">
-            Frequently Asked Questions
-          </h2>
-          <ul>
-            <li>
-              <strong>Q: How do I book a trip?</strong>
-              <p>
-                A: You can book a trip by visiting our website and using our
-                online booking system.
-              </p>
-            </li>
-            <li>
-              <strong>Q: What payment methods do you accept?</strong>
-              <p>
-                A: We accept credit cards, PayPal, and more. Check our payment
-                options for details.
-              </p>
-            </li>
-            {/* Add more FAQs as needed */}
-          </ul>
+          <div>
+            <MapContainer
+              center={[Number(36.7783), Number(119.4179)]}
+              zoom={1}
+              scrollWheelZoom={true}
+              className="w-full z-40 h-72"
+            >
+              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+              <Marker position={[Number(36.7783), Number(119.4179)]}>
+                <Popup>USA</Popup>
+              </Marker>
+            </MapContainer>
+          </div>
         </section>
 
         {/* Social Media Links */}
@@ -118,7 +109,13 @@ const ContactUs = () => {
             Follow us on social media to stay updated with our latest travel
             deals and news.
           </p>
-          {/* Add your social media links/icons here */}
+          <div className="flex space-x-4 text-3xl mt-5">
+            <FacebookFilled color="black" />
+            <TwitterOutlined color="black" />
+            <LinkedinFilled color="black" />
+            <InstagramFilled color="black" />
+            <YoutubeFilled color="black" />
+          </div>{" "}
         </section>
       </div>
     </div>

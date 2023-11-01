@@ -38,8 +38,8 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-8 h-screen">
-      <div className="col-span-1 grid place-items-center">
+    <div className="grid lg:grid-cols-3 gap-8 h-screen">
+      <div className="col-span-1 lg:grid place-items-center hidden">
         <div className="">
           <Link href={"/"}>
             <Image src={logo} alt="brand" height={80} width={200} />
