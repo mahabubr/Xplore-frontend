@@ -63,7 +63,7 @@ const ServiceFilter = () => {
   }, [minPrice, maxPrice, month, location, dispatch]);
 
   return (
-    <div className="bg-elegant p-4 rounded-lg">
+    <div className="bg-elegant p-4 rounded-lg sticky top-40">
       <h2 className="text-center text-passion text-lg">
         Find Your Destination
       </h2>

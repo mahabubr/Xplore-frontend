@@ -7,11 +7,16 @@ import Title from "../UI/Title";
 import { useGetServicesQuery } from "@/redux/api/features/services/servicesApi";
 import { iServices } from "@/interface/api";
 import BannerCardOne from "../Services/Card/BannerCardOne";
+import Loader from "../Shared/Loader";
 
 const UpcomingServices = () => {
   const { data, isLoading } = useGetServicesQuery({
     availabilityType: "UPCOMING",
   });
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="container mx-auto z-50">

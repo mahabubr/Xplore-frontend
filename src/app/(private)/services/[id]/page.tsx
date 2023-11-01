@@ -68,7 +68,7 @@ const SingleService = ({ params }: any) => {
   return (
     <div>
       <div className="relative h-96">
-        <Image src={image} alt="" layout="fill" objectFit="cover" />
+        <Image src={image} alt="" layout="fill" objectFit="cover" className="brightness-50 hover:brightness-100 duration-500"/>
       </div>
       <div className="w-10/12 mx-auto mt-10">
         <Row gutter={50}>

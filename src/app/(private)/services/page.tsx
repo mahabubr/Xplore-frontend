@@ -16,7 +16,6 @@ import {
   SortableContext,
 } from "@dnd-kit/sortable";
 import { Tabs } from "antd";
-import { Col, Row } from "antd";
 import { useState } from "react";
 
 const Services = () => {
@@ -68,12 +67,16 @@ const Services = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto mt-10">
-      <Row gutter={50}>
-        <Col lg={18}>
+    <div className="container mx-auto mt-10 overflow-x-hidden">
+      <div className="flex justify-between flex-col-reverse lg:flex-row gap-10">
+        <div className="lg:w-9/12 mx-auto">
           <Tabs
             type="card"
             animated
+            tabBarStyle={{
+              display: "flex",
+              flexWrap: "wrap",
+            }}
             items={items}
             renderTabBar={(tabBarProps, DefaultTabBar) => (
               <DndContext sensors={[sensor]} onDragEnd={onDragEnd}>
@@ -92,11 +95,11 @@ const Services = () => {
               </DndContext>
             )}
           />
-        </Col>
-        <Col lg={6}>
+        </div>
+        <div className="lg:w-3/12">
           <ServiceFilter />
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };

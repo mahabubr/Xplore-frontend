@@ -11,7 +11,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthProvider>
       <Provider store={store}>
-        <StyledComponentsRegistry>
+        <StyledComponentsRegistry >
           <ConfigProvider theme={theme}>{children}</ConfigProvider>
         </StyledComponentsRegistry>
       </Provider>

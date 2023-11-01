@@ -44,7 +44,7 @@ const LoginPage = () => {
       <div className="col-span-1 lg:grid place-items-center hidden">
         <div className="">
           <Link href={"/"}>
-            <Image src={logo} alt="brand" height={80} width={200} />
+            <Image src={logo} alt="brand" height={70} width={200} />
           </Link>
           <p className="text-center text-neutral">More Explore</p>
         </div>
